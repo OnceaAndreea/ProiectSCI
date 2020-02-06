@@ -1,4 +1,4 @@
 package sci.project.TransportantionCompany.model;
 
-public class Schedule {
+public class Station {
 }

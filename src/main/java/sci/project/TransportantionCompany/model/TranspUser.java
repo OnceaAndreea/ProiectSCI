@@ -1,5 +1,7 @@
 package sci.project.TransportantionCompany.model;
 
+import enums.TranspUserRole;
+
 public class TranspUser {
 
     private int id;

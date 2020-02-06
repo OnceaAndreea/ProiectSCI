@@ -1,4 +1,4 @@
-package sci.project.TransportantionCompany.model;
+package enums;
 
 public enum TranspUserRole {
 

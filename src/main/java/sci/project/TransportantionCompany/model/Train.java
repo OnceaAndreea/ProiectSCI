@@ -1,4 +1,4 @@
 package sci.project.TransportantionCompany.model;
 
-public class Highway {
+public class Train extends Transport {
 }
