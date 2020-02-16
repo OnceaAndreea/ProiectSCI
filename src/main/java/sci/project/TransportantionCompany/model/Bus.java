@@ -1,4 +1,10 @@
 package sci.project.TransportantionCompany.model;
 
-public class Bus extends Transport {
+public class Bus {
+
+    private String id;//nu se autoincrementeaza
+    private int numberOfSeats;
+
+
+
 }
