@@ -1,14 +1,15 @@
 package sci.project.TransportantionCompany.model;
 
-public class Route {
+public class BusRoute {
 
     private int id;
+    private int busId;//cheie straina
     private String departure;
     private String arrival;
     private String departureTime;
     private String arrivalTime;
     private int distance;
-    private int transportId;
+    private double price;
 
     public int getId() {
         return id;
