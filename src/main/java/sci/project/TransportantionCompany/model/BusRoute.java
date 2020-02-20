@@ -3,7 +3,7 @@ package sci.project.TransportantionCompany.model;
 public class BusRoute {
 
     private int id;
-    private int busId;//cheie straina
+    private int busId;
     private String departure;
     private String arrival;
     private String departureTime;

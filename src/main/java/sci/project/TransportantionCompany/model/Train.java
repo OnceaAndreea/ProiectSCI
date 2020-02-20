@@ -1,10 +1,21 @@
 package sci.project.TransportantionCompany.model;
 
+
+import javax.persistence.*;
+
+@Entity
+@Table(name = "train")
 public class Train {
 
-    private String id;//nu se autoincrementeaza, incepe cu T
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id",nullable = false)
+    private String id;
+    @Column(name = "wagonId",nullable = false)
+    private int wagonId;
+    @Column(name = "type",nullable = false)
     private String type;
-    private int wagonId;//o lista de vagoane
+
 
 
     }
