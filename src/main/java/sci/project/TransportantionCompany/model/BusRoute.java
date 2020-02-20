@@ -1,15 +1,39 @@
 package sci.project.TransportantionCompany.model;
 
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
+
+@Entity
+@Table(name = "busRoute")
 public class BusRoute {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id", nullable = false)
     private int id;
-    private int busId;
+//    @Column(name = "busId", nullable = false)
+//    private int busId;
+    @Column(name = "departure", nullable = false)
     private String departure;
+    @Column(name = "arrival", nullable = false)
     private String arrival;
+    @Column(name = "departureTime", nullable = false)
     private String departureTime;
+    @Column(name = "arrivalTime", nullable = false)
     private String arrivalTime;
+    @Column(name = "distance", nullable = false)
     private int distance;
+    @Column(name = "price", nullable = false)
     private double price;
+
+    @OneToMany
+            (
+                    mappedBy = "BusRoute",
+                    cascade = CascadeType.ALL,
+                    orphanRemoval = true
+            )
+    private List<Bus> buses = new ArrayList<>();// o ruta poate fi facuta de mai multe bus-uri(in zile diferite,ore,etc)
 
     public int getId() {
         return id;
