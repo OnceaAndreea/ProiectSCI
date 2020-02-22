@@ -22,4 +22,9 @@ public class BusTicket {
     @Column(name = "price", nullable = false)
     private double price;
 
+    //un bilet corespunde unui anumit user
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id", nullable = false)
+    private TranspUser transpUser;
+
 }

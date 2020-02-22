@@ -12,28 +12,30 @@ public class BusRoute {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private int id;
-//    @Column(name = "busId", nullable = false)
-//    private int busId;
+
     @Column(name = "departure", nullable = false)
     private String departure;
+
     @Column(name = "arrival", nullable = false)
     private String arrival;
+
     @Column(name = "departureTime", nullable = false)
     private String departureTime;
+
     @Column(name = "arrivalTime", nullable = false)
     private String arrivalTime;
+
     @Column(name = "distance", nullable = false)
     private int distance;
+
     @Column(name = "price", nullable = false)
     private double price;
 
-    @OneToMany
-            (
-                    mappedBy = "BusRoute",
-                    cascade = CascadeType.ALL,
-                    orphanRemoval = true
-            )
-    private List<Bus> buses = new ArrayList<>();// o ruta poate fi facuta de mai multe bus-uri(in zile diferite,ore,etc)
+    // mai multe rute pot fi facute de acelasi bus(in momente de timp diferite)
+    //fiecare busRoute are toate informatiile despre bus-ul care o face
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "bus_id", nullable = false)
+    private Bus bus;
 
     public int getId() {
         return id;

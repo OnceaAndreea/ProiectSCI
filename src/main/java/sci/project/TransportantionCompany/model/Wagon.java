@@ -11,14 +11,14 @@ public class Wagon {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private int id;
-    @Column(name = "trainId", nullable = false)
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "trainId", nullable = false)
     private Train train;
 
-    @Column(name = "type", nullable = false)
+    @Column(name = "type", nullable = false)//clasa 1,clasa2,cuseta
     private String type;
-    @Column(name = "numberOfSeats", nullable = false)
-    private int numberOfSeats;
+
+    @Column(name = "number_of_available_seats", nullable = false)
+    private int numberOfAvailableSeats;
 }
