@@ -22,6 +22,9 @@ public class BusRoute {
     @Column(name = "departureTime", nullable = false)
     private String departureTime;
 
+//    @Column(name = "departureDate", nullable = false)
+//    private String departureDate;
+
     @Column(name = "arrivalTime", nullable = false)
     private String arrivalTime;
 
@@ -84,4 +87,20 @@ public class BusRoute {
     public void setDistance(int distance) {
         this.distance = distance;
     }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
+//    public String getDepartureDate() {
+//        return departureDate;
+//    }
+//
+//    public void setDepartureDate(String departureDate) {
+//        this.departureDate = departureDate;
+//}
 }

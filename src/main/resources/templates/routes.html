@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div th:switch="${busRoutes}" xmlns:th="http://www.w3.org/1999/xhtml">
+    <h2 th:case="null">No available routes!</h2>
+    <div th:case="*">
+        <h2>available routes with bus from</h2>
+        <table>
+            <thead>
+            <tr>
+                <th>From</th>
+                <th>To</th>
+                <th>Departure Time</th>
+                <th>Arrival time</th>
+                <th>Distance</th>
+                <th>Price</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="route : ${busRoutes}">
+                <td th:text="${route.getDeparture()}"></td>
+                <td th:text="${route.getArrival()}"></td>
+                <td th:text="${route.getDepartureTime()}"></td>
+                <td th:text="${route.getArrivalTime()}"></td>
+                <td th:text="${route.getDistance()}"></td>
+                <td th:text="${route.getPrice()}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+</div>
+</body>

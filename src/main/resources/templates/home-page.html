@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+<form action="#" th:action="@{/routecontroller/show}" th:object="${busRoute}" method="get" xmlns:th="http://www.w3.org/1999/xhtml" >
+    <label for="departure">From</label>
+    <input type="text" th:field="*{departure}" id="departure" >
+    <span th:if="${#fields.hasErrors('departure')}" th:errors="*{departure}"></span>
+    <label for="arrival">To</label>
+    <input type="text" th:field="*{arrival}" id="arrival" >
+    <span th:if="${#fields.hasErrors('arrival')}" th:errors="*{arrival}"></span>
+    <label for="departureTime">Date</label>
+    <input type="text" th:field="*{departureTime}" id="departureTime" >
+    <span th:if="${#fields.hasErrors('departureTime')}" th:errors="*{departureTime}"></span>
+    <input type="submit" name="action" value="Show" >
+</form>
+
+</body>
+</html>

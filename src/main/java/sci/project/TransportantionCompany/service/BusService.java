@@ -13,16 +13,18 @@ public class BusService {
     @Autowired
     BusRepository busRepository;
 
-    public void createBus(Bus bus){
+    public void createBus(Bus bus) {
         busRepository.save(bus);
     }
+
     public List<Bus> getAllBuses() {
         return busRepository.findAll();
     }
 
-    public Bus getBusById(int id)
-    {
+    public Bus getBusById(int id) {
         return busRepository.findById(id).orElse(null);
     }
+
+
 
 }
