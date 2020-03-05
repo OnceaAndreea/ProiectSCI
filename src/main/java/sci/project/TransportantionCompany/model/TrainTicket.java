@@ -1,7 +1,8 @@
 package sci.project.TransportantionCompany.model;
 
 import javax.persistence.*;
-
+// class train ticket
+// test comment by raluque
 @Entity
 @Table(name = "trainTicket")
 public class TrainTicket {
