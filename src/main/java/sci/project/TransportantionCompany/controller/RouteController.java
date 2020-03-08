@@ -28,14 +28,14 @@ public class RouteController {
         return "home-page";
     }
 
-    @RequestMapping(value = "/show", method = RequestMethod.GET)
+    @RequestMapping(value = "/search", method = RequestMethod.GET)
     public String addPerson(@ModelAttribute("busRoute") @Valid BusRoute busRoute, BindingResult result, Model model) {
 
         if (result.hasErrors()) {
             return "home-page";
         }
 
-        model.addAttribute("busRoutes", busRouteService.getAllRoutes(busRoute.getDeparture(), busRoute.getArrival(), busRoute.getDepartureTime()));
+        model.addAttribute("busRoutes", busRouteService.getAllRoutes(busRoute.getDeparture(), busRoute.getArrival(), busRoute.getDepartureDate()));
         return "routes";
     }
 }

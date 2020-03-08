@@ -16,14 +16,17 @@ public class BusRoute {
     @Column(name = "departure", nullable = false)
     private String departure;
 
+    @Column(name= "station", nullable=false)
+    private String station;
+
     @Column(name = "arrival", nullable = false)
     private String arrival;
 
     @Column(name = "departureTime", nullable = false)
     private String departureTime;
 
-//    @Column(name = "departureDate", nullable = false)
-//    private String departureDate;
+    @Column(name = "departureDate", nullable = false)
+    private String departureDate;
 
     @Column(name = "arrivalTime", nullable = false)
     private String arrivalTime;
@@ -96,11 +99,19 @@ public class BusRoute {
         this.price = price;
     }
 
-//    public String getDepartureDate() {
-//        return departureDate;
-//    }
-//
-//    public void setDepartureDate(String departureDate) {
-//        this.departureDate = departureDate;
-//}
+    public String getDepartureDate() {
+        return departureDate;
+    }
+
+    public void setDepartureDate(String departureDate) {
+        this.departureDate = departureDate;
+}
+
+    public String getStation() {
+        return station;
+    }
+
+    public void setStation(String station) {
+        this.station = station;
+    }
 }

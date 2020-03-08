@@ -14,13 +14,13 @@ public class BusRouteService {
     @Autowired
     BusRouteRepository busRouteRepository;
 
-    public List<BusRoute> getAllRoutes(String departure, String arrival, String departureTime) {
+    public List<BusRoute> getAllRoutes(String departure, String arrival, String departureDate) {
 
         List<BusRoute> routes = new ArrayList<>();
         List<BusRoute> allRoutes = busRouteRepository.findAll();
 
         for (int i = 0; i < allRoutes.size(); i++) {
-            if (allRoutes.get(i).getDeparture().equals(departure) && allRoutes.get(i).getArrival().equals(arrival) && allRoutes.get(i).getDepartureTime().equals(departureTime))
+            if (allRoutes.get(i).getDeparture().equals(departure) && allRoutes.get(i).getArrival().equals(arrival) && allRoutes.get(i).getDepartureDate().equals(departureDate))
                 routes.add(allRoutes.get(i));
         }
 

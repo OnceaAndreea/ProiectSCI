@@ -8,13 +8,15 @@
 <div th:switch="${busRoutes}" xmlns:th="http://www.w3.org/1999/xhtml">
     <h2 th:case="null">No available routes!</h2>
     <div th:case="*">
-        <h2>available routes with bus from</h2>
+        <h2>Available routes with bus</h2>
         <table>
             <thead>
             <tr>
-                <th>From</th>
-                <th>To</th>
-                <th>Departure Time</th>
+                <th>Departure from</th>
+                <th>Arrival in</th>
+                <th>Station</th>
+                <th>Departure time</th>
+                <th>Departure date</th>
                 <th>Arrival time</th>
                 <th>Distance</th>
                 <th>Price</th>
@@ -24,7 +26,9 @@
             <tr th:each="route : ${busRoutes}">
                 <td th:text="${route.getDeparture()}"></td>
                 <td th:text="${route.getArrival()}"></td>
+                <td th:text="${route.getStation()}"></td>
                 <td th:text="${route.getDepartureTime()}"></td>
+                <td th:text="${route.getDepartureDate()}"></td>
                 <td th:text="${route.getArrivalTime()}"></td>
                 <td th:text="${route.getDistance()}"></td>
                 <td th:text="${route.getPrice()}"></td>
