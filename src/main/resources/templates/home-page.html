@@ -5,16 +5,16 @@
 </head>
 <body>
 <form action="#" th:action="@{/routecontroller/search}" th:object="${busRoute}" method="get" xmlns:th="http://www.w3.org/1999/xhtml" >
-    <label for="departure">Departure from</label>
+    <label for="departure">Plecare</label>
     <input type="text" th:field="*{departure}" id="departure" >
     <span th:if="${#fields.hasErrors('departure')}" th:errors="*{departure}"></span>
-    <label for="arrival">Arrival in</label>
+    <label for="arrival">Sosire</label>
     <input type="text" th:field="*{arrival}" id="arrival" >
     <span th:if="${#fields.hasErrors('arrival')}" th:errors="*{arrival}"></span>
-    <label for="departureDate">Date</label>
+    <label for="departureDate">Data</label>
     <input type="text" th:field="*{departureDate}" id="departureDate" >
     <span th:if="${#fields.hasErrors('departureDate')}" th:errors="*{departureDate}"></span>
-    <input type="submit" name="action" value="Search" >
+    <input type="submit" name="action" value="Cauta" >
 </form>
 
 </body>
