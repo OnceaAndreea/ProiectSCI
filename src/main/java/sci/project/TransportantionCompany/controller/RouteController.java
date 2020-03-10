@@ -28,7 +28,7 @@ public class RouteController {
         return "home-page";
     }
 
-    @RequestMapping(value = "/search", method = RequestMethod.GET)
+    @RequestMapping(value = "/search", params = "action", method = RequestMethod.GET)
     public String addPerson(@ModelAttribute("busRoute") @Valid BusRoute busRoute, BindingResult result, Model model) {
 
         if (result.hasErrors()) {
@@ -38,6 +38,47 @@ public class RouteController {
         model.addAttribute("busRoutes", busRouteService.getAllRoutes(busRoute.getDeparture(), busRoute.getArrival(), busRoute.getDepartureDate()));
         return "routes";
     }
+
+    @RequestMapping(value = "/search", params = "showAllDAndA", method = RequestMethod.GET)
+    public String searchByDepartureAndArrival(@ModelAttribute("busRoute") @Valid BusRoute busRoute, BindingResult result, Model model) {
+
+        if (result.hasErrors()) {
+            return "home-page";
+        }
+
+        model.addAttribute("busRoutes", busRouteService.getAllByDepartureAndArrival(busRoute.getDeparture(), busRoute.getArrival()));
+        return "routes";
+    }
+
+    @RequestMapping(value = "/search", params = "showAllDepartureDay", method = RequestMethod.GET)
+    public String searchByDate(@ModelAttribute("busRoute") @Valid BusRoute busRoute, BindingResult result, Model model) {
+
+        if (result.hasErrors()) {
+            return "home-page";
+        }
+
+        model.addAttribute("busRoutes", busRouteService.getAllByDate(busRoute.getDepartureDate()));
+        return "routes";
+    }
+
+
+    @RequestMapping(value = "/search", params = "showAll", method = RequestMethod.GET)
+    public String searchAll(@ModelAttribute("busRoute") @Valid BusRoute busRoute, BindingResult result, Model model) {
+
+        if (result.hasErrors()) {
+            return "home-page";
+        }
+
+        model.addAttribute("busRoutes", busRouteService.showAllAvailableRoutes());
+        return "routes";
+    }
+
+    @RequestMapping(value = "/search", params = "backBtn", method = RequestMethod.GET)
+    public String back(@ModelAttribute("busRoute") @Valid BusRoute busRoute, BindingResult result) {
+        return "home-page";
+    }
+
+
 }
 
 

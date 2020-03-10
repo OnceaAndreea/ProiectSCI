@@ -15,6 +15,8 @@
     <input type="text" th:field="*{departureDate}" id="departureDate" >
     <span th:if="${#fields.hasErrors('departureDate')}" th:errors="*{departureDate}"></span>
     <input type="submit" name="action" value="Cauta" >
+    <input type="submit" value="List all by Departure and Arrival" name="showAllDAndA">
+    <input type="submit" value="showAllByDepartureDate" name="showAllDepartureDay">
 </form>
 
 </body>

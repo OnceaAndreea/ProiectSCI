@@ -2,6 +2,7 @@ package sci.project.TransportantionCompany.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import sci.project.TransportantionCompany.model.Bus;
 import sci.project.TransportantionCompany.model.BusRoute;
 import sci.project.TransportantionCompany.repository.BusRouteRepository;
 
@@ -28,6 +29,13 @@ public class BusRouteService {
     }
     public List<BusRoute> showAllAvailableRoutes(){
         return busRouteRepository.findAll();
+    }
+
+    public List<BusRoute> getAllByDepartureAndArrival(String departure, String arrival){
+        return busRouteRepository.getAllByDepartureAndArrival(departure,arrival);
+    }
+    public List<BusRoute> getAllByDate(String date){
+        return busRouteRepository.getAllByDepartureDate(date);
     }
 
 }
