@@ -5,11 +5,12 @@
         <title>Title</title>
     </head>
     <body>
-        <div th:switch="${busRoutes}" xmlns:th="http://www.w3.org/1999/xhtml">
+
+      <div th:switch="${busRoutes}" xmlns:th="http://www.w3.org/1999/xhtml">
             <h2 th:case="null">No available routes!</h2>
             <div th:case="*">
                 <h2>Available routes with bus</h2>
-                <table>
+              <div> <table>
                     <thead>
                         <tr>
                             <th>Plecare</th>
@@ -25,18 +26,20 @@
                             <td th:text="${route.getDeparture()+route.getDepartureStation()}"></td>
                             <td th:text="${route.getArrival()+route.getArrivalStation()}"></td>
                             <td th:text="${route.getDepartureTime()}"></td>
-                            <td th:text="${route.getDepartureDate()}"></td>
+                            <td th:text="${route.getArrivalTime()}"></td>
                             <td th:text="${route.getDistance()}"></td>
                             <td th:text="${route.getPrice()}"></td>
+                            <td><input type="submit" value="Cumpara bilet" name="buy"> </td>
                         </tr>
                     </tbody>
                 </table>
+              </div>
             </div>
             <form>
                 <input type="submit" value="All Routes" name="showAll">
                 <input type="submit" value="Back" name="backBtn">
             </form>
 
-
-        </div>
+      </div>
     </body>
+

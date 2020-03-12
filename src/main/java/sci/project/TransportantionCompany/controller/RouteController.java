@@ -1,5 +1,6 @@
 package sci.project.TransportantionCompany.controller;
 
+import ch.qos.logback.core.net.SyslogOutputStream;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -34,7 +35,7 @@ public class RouteController {
         if (result.hasErrors()) {
             return "home-page";
         }
-
+        System.out.println("Data:" +busRoute.getDepartureDate());
         model.addAttribute("busRoutes", busRouteService.getAllRoutes(busRoute.getDeparture(), busRoute.getArrival(), busRoute.getDepartureDate()));
         return "routes";
     }

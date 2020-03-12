@@ -2,9 +2,11 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
+    <link href="../static/css/home.css" th:href="@{/css/home.css}" rel="stylesheet" />
 </head>
 <body>
 <form action="#" th:action="@{/routecontroller/search}" th:object="${busRoute}" method="get" xmlns:th="http://www.w3.org/1999/xhtml" >
+   <div class="aligning">
     <label for="departure">Plecare</label>
     <input type="text" th:field="*{departure}" id="departure" >
     <span th:if="${#fields.hasErrors('departure')}" th:errors="*{departure}"></span>
@@ -12,11 +14,12 @@
     <input type="text" th:field="*{arrival}" id="arrival" >
     <span th:if="${#fields.hasErrors('arrival')}" th:errors="*{arrival}"></span>
     <label for="departureDate">Data</label>
-    <input type="text" th:field="*{departureDate}" id="departureDate" >
+    <input type="date" th:field="*{departureDate}" id="departureDate" >
     <span th:if="${#fields.hasErrors('departureDate')}" th:errors="*{departureDate}"></span>
     <input type="submit" name="action" value="Cauta" >
-    <input type="submit" value="List all by Departure and Arrival" name="showAllDAndA">
-    <input type="submit" value="showAllByDepartureDate" name="showAllDepartureDay">
+ <!--   <input type="submit" value="List all by Departure and Arrival" name="showAllDAndA">
+    <input type="submit" value="showAllByDepartureDate" name="showAllDepartureDay"> -->
+   </div>
 </form>
 
 </body>
