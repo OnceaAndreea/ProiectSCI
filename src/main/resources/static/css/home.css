@@ -14,8 +14,8 @@ input[type=text],input[type=date] {
 }
 
 .aligning {
-  margin-left: 180px;
-  margin-right: 180px;
+  margin-left: 0px;
+  margin-right: 0px;
   margin-top: 300px;
   background: #669999;
   padding: 39px 28px;
@@ -32,4 +32,7 @@ background-color: #4CAF50;
   font-size: 16px;
   margin: 4px 2px;
   cursor: pointer;
+}
+.stil{
+background-image: url('wallp.jpg');
 }
