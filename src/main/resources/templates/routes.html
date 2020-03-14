@@ -1,46 +1,47 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
-    <link href="../static/css/home.css" th:href="@{/css/home.css}" rel="stylesheet" />
+    <link href="../static/css/home.css" th:href="@{/css/home.css}" rel="stylesheet"/>
     <head>
         <meta charset="UTF-8">
         <title>Title</title>
     </head>
     <body>
 
-      <div th:switch="${busRoutes}" xmlns:th="http://www.w3.org/1999/xhtml">
+        <div th:switch="${busRoutes}" xmlns:th="http://www.w3.org/1999/xhtml">
             <h2 th:case="null">No available routes!</h2>
             <div th:case="*">
                 <h2>Available routes with bus</h2>
-              <div> <table>
-                    <thead>
-                        <tr>
-                            <th>Plecare</th>
-                            <th>Sosire</th>
-                            <th>Ora de plecare</th>
-                            <th>Ora de sosire</th>
-                            <th>Distanta</th>
-                            <th>Pret</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr th:each="route : ${busRoutes}">
-                            <td th:text="${route.getDeparture()+route.getDepartureStation()}"></td>
-                            <td th:text="${route.getArrival()+route.getArrivalStation()}"></td>
-                            <td th:text="${route.getDepartureTime()}"></td>
-                            <td th:text="${route.getArrivalTime()}"></td>
-                            <td th:text="${route.getDistance()}"></td>
-                            <td th:text="${route.getPrice()}"></td>
-                            <td><input type="submit" value="Cumpara bilet" name="buy"> </td>
-                        </tr>
-                    </tbody>
-                </table>
-              </div>
+                <div>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Plecare</th>
+                                <th>Sosire</th>
+                                <th>Ora de plecare</th>
+                                <th>Data plecarii</th>
+                                <th>Distanta</th>
+                                <th>Pret</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr th:each="route : ${busRoutes}">
+                                <td th:text="${route.getDeparture()+route.getDepartureStation()}"></td>
+                                <td th:text="${route.getArrival()+route.getArrivalStation()}"></td>
+                                <td th:text="${route.getDepartureTime()}"></td>
+                                <td th:text="${route.getArrivalTime()}"></td>
+                                <td th:text="${route.getDistance()}"></td>
+                                <td th:text="${route.getPrice()}"></td>
+                                <td><input type="submit" value="Cumpara bilet" name="buy"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
             <form>
                 <input type="submit" value="All Routes" name="showAll">
                 <input type="submit" value="Back" name="backBtn">
             </form>
 
-      </div>
+        </div>
     </body>
 
