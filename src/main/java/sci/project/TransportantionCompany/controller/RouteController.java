@@ -13,6 +13,7 @@ import sci.project.TransportantionCompany.service.BusRouteService;
 import javax.validation.Valid;
 
 @Controller
+@RequestMapping("/routecontroller")
 public class RouteController {
 
     @Autowired
@@ -23,32 +24,31 @@ public class RouteController {
         return new BusRoute();
     }
 
-    @RequestMapping(value = "/")
-    public String home() {
-        return "index";
-    }
-
-    @RequestMapping(value = "/", params = "showAll", method = RequestMethod.GET)
-    public String homeShowAll(@ModelAttribute("busRoute") @Valid BusRoute busRoute, BindingResult result, Model model) {
-        if (!result.hasErrors()) {
-            if("showAll" != null)
-            model.addAttribute("busRoutes", busRouteService.showAllAvailableRoutes());
-        }
-        return "index";
-    }
+//    @RequestMapping(value = "/")
+//    public String home() {
+//        return "index";
+//    }
+//
+//    @RequestMapping(value = "/", params = "showAll", method = RequestMethod.GET)
+//    public String homeShowAll(@ModelAttribute("busRoute") @Valid BusRoute busRoute, BindingResult result, Model model) {
+//        if (!result.hasErrors()) {
+//            if("showAll" != null)
+//            model.addAttribute("busRoutes", busRouteService.showAllAvailableRoutes());
+//        }
+//        return "index";
+//    }
 
     @GetMapping("/home")
     public String showHomePageForm(BusRoute busRoute) {
         return "home-page";
     }
 
-    @RequestMapping(value = "/search", params = "action", method = RequestMethod.GET)
+    @RequestMapping(value = "/search", params = "searchBtn", method = RequestMethod.GET)
     public String addPerson(@ModelAttribute("busRoute") @Valid BusRoute busRoute, BindingResult result, Model model) {
 
         if (result.hasErrors()) {
             return "home-page";
         }
-        System.out.println("Data:" + busRoute.getDepartureDate());
         model.addAttribute("busRoutes", busRouteService.getAllRoutes(busRoute.getDeparture(), busRoute.getArrival(), busRoute.getDepartureDate()));
         return "routes";
     }

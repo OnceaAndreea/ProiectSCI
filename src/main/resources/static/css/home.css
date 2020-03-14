@@ -15,18 +15,9 @@ input[type=text], input[type=date] {
 }
 
 .aligning {
-<<<<<<< HEAD
-  margin-left: 0px;
-  margin-right: 0px;
   margin-top: 300px;
   background: #669999;
   padding: 39px 28px;
-=======
-    margin-left: 180px;
-    margin-right: 180px;
-    margin-top: 300px;
-    background: #669999;
-    padding: 39px 28px;
 }
 
 input[type=submit] {
@@ -40,7 +31,6 @@ input[type=submit] {
     font-size: 16px;
     margin: 4px 2px;
     cursor: pointer;
->>>>>>> 14c57cb1b690efe8eb9a2092b9872e6e2a20b02b
 }
 
 table, th, td {

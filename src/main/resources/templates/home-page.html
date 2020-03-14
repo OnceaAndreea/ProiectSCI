@@ -3,29 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <link href="../static/css/home.css" th:href="@{/css/home.css}" rel="stylesheet" />
+    <div>
+        <input type="submit"  name="Autentificare" value="Contul tau">
+
+        <input type="submit"  name="Autentificare" value="Contact">
+
+        <input type="submit"  name="Autentificare" value="Curse">
+
+        <input type="submit"  name="Autentificare" value="Despre noi">
+    </div>
+
 </head>
-<<<<<<< HEAD
 <body class="stil">
 <form action="#" th:action="@{/routecontroller/search}" th:object="${busRoute}" method="get" xmlns:th="http://www.w3.org/1999/xhtml" >
-=======
-<body>
-<form action="#" th:action="@{/search}" th:object="${busRoute}" method="get" xmlns:th="http://www.w3.org/1999/xhtml" >
->>>>>>> 14c57cb1b690efe8eb9a2092b9872e6e2a20b02b
-   <div class="aligning">
-    <label for="departure">Plecare</label>
-    <input type="text" th:field="*{departure}" id="departure" >
-    <span th:if="${#fields.hasErrors('departure')}" th:errors="*{departure}"></span>
-    <label for="arrival">Sosire</label>
-    <input type="text" th:field="*{arrival}" id="arrival" >
-    <span th:if="${#fields.hasErrors('arrival')}" th:errors="*{arrival}"></span>
-    <label for="departureDate">Data</label>
-    <input type="date" th:field="*{departureDate}" id="departureDate" >
-    <span th:if="${#fields.hasErrors('departureDate')}" th:errors="*{departureDate}"></span>
-    <input type="submit" name="action" value="Cauta" >
- <!--   <input type="submit" value="List all by Departure and Arrival" name="showAllDAndA">
-    <input type="submit" value="showAllByDepartureDate" name="showAllDepartureDay"> -->
-   </div>
+    <div class="aligning">
+        <label for="departure">Plecare</label>
+        <input type="text" th:field="*{departure}" id="departure" >
+        <span th:if="${#fields.hasErrors('departure')}" th:errors="*{departure}"></span>
+        <label for="arrival">Sosire</label>
+        <input type="text" th:field="*{arrival}" id="arrival" >
+        <span th:if="${#fields.hasErrors('arrival')}" th:errors="*{arrival}"></span>
+        <label for="departureDate">Data</label>
+        <input type="date" th:field="*{departureDate}" id="departureDate" >
+        <span th:if="${#fields.hasErrors('departureDate')}" th:errors="*{departureDate}"></span>
+        <input type="submit" name="searchBtn" value="Cauta" >
+        <!--   <input type="submit" value="List all by Departure and Arrival" name="showAllDAndA">
+           <input type="submit" value="showAllByDepartureDate" name="showAllDepartureDay"> -->
+    </div>
 </form>
 
 </body>
-</html>
