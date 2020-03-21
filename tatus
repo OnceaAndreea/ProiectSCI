@@ -1,0 +1,13 @@
+[1mdiff --git a/src/main/resources/application.properties b/src/main/resources/application.properties[m
+[1mindex 2e467c7..cd17011 100644[m
+[1m--- a/src/main/resources/application.properties[m
+[1m+++ b/src/main/resources/application.properties[m
+[36m@@ -9,7 +9,7 @@[m [mspring.datasource.url = jdbc:mysql://localhost:3306/transportation_company[m
+ [m
+ # Username and password[m
+ spring.datasource.username = root[m
+[31m-spring.datasource.password = orangeroya[m
+[32m+[m[32mspring.datasource.password = raluca[m
+ [m
+ # Keep the connection alive if idle for a long time (needed in production)[m
+ spring.datasource.testWhileIdle = true[m

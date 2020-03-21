@@ -45,7 +45,7 @@
         <label for="departureDate">Data</label>
         <input type="date" th:field="*{departureDate}" id="departureDate" >
         <span th:if="${#fields.hasErrors('departureDate')}" th:errors="*{departureDate}"></span>
-        <input type="submit" name="searchBtn" value="Cautare" >
+        <input class="butonSearch default" type="submit" name="searchBtn" value="Căutare" >
     </form>
 </div>
 
