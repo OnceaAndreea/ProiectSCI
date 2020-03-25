@@ -39,5 +39,5 @@ public class TrainTicket {
     //fiecare bilet corepunde unui user
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", nullable = false)
-    private TranspUser transpUser;
+    private User user;
 }

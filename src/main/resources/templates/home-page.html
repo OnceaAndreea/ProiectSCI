@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
 </head>
 
-
 <body>
 
 <!-- Logo -->
@@ -22,7 +21,8 @@
     <a href="#despreNoi" class="w3-button w3-bar-item">DESPRE NOI</a>
     <a href="#contact" class="w3-button w3-bar-item">CONTACT</a>
     <a href="#cariere" class="w3-button w3-bar-item">CARIERE</a>
-    <a href="login.html" class="w3-button w3-bar-item">AUTENTIFICARE</a>
+    <a class="w3-button w3-bar-item" th:href="@{login}">AUTENTIFICARE</a>
+
 </nav>
 
 <!-- Text & Autobuze -->
@@ -35,7 +35,7 @@
 <!-- Search section -->
 
 <div class="w3-container w3-content w3-center" style="max-width:1200px">
-    <form action="#" th:action="@{/routecontroller/search}" th:object="${busRoute}" method="get" xmlns:th="http://www.w3.org/1999/xhtml" >
+    <form action="#" th:action="@{/search}" th:object="${busRoute}" method="get" xmlns:th="http://www.w3.org/1999/xhtml" >
         <label for="departure">De la </label>
         <input type="text" th:field="*{departure}" id="departure" >
         <span th:if="${#fields.hasErrors('departure')}" th:errors="*{departure}"></span>

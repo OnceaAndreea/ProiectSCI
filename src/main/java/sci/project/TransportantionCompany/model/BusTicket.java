@@ -25,6 +25,6 @@ public class BusTicket {
     //un bilet corespunde unui anumit user
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", nullable = false)
-    private TranspUser transpUser;
+    private User user;
 
 }
