@@ -13,7 +13,7 @@ import sci.project.TransportantionCompany.service.BusRouteService;
 import javax.validation.Valid;
 
 @Controller
-public class RouteController {
+public class MainController {
 
     @Autowired
     BusRouteService busRouteService;
