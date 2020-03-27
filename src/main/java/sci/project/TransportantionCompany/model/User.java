@@ -28,23 +28,8 @@ public class User {
     @Column(name = "email",nullable = false)
     private String email;
 
-    @Email
-    @Column(name = "confirm_email",nullable = false)
-    private String confirmEmail;
-
     @Column(name = "password",nullable = false)
     private String password;
-
-    @Column(name = "confirm_password",nullable = false)
-    private String confirmPassword;
-
-    @AssertTrue
-    private Boolean terms;
-
-
-
-    //un user poate avea mai multe roluri si un acelasi rol il pot avea mai multi useri
-    //se rezolva relatia manytomany prin adaugarea unei tabele intermediare users_roles
 
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinTable(
@@ -90,7 +75,6 @@ public class User {
         this.roles = roles;
     }
 
-
     public String getEmail() {
         return email;
     }
@@ -129,22 +113,6 @@ public class User {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
-    }
-
-    public String getConfirmEmail() {
-        return confirmEmail;
-    }
-
-    public void setConfirmEmail(String confirmEmail) {
-        this.confirmEmail = confirmEmail;
-    }
-
-    public String getConfirmPassword() {
-        return confirmPassword;
-    }
-
-    public void setConfirmPassword(String confirmPassword) {
-        this.confirmPassword = confirmPassword;
     }
 
     @Override

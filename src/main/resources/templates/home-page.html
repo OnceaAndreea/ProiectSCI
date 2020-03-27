@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -15,13 +16,14 @@
     <img class="myBuses" style="width:25%"  th:src="@{/img/logo3.png}" alt="memorynotfound logo"/>
 </div>
 
-<!-- Navigation -->
+<!-- Navigation bar-->
 <nav class="w3-bar w3-transparent">
     <a href="#curse" class="w3-button w3-bar-item">CURSE</a>
     <a href="#despreNoi" class="w3-button w3-bar-item">DESPRE NOI</a>
     <a href="#contact" class="w3-button w3-bar-item">CONTACT</a>
     <a href="#cariere" class="w3-button w3-bar-item">CARIERE</a>
-    <a class="w3-button w3-bar-item" th:href="@{login}">AUTENTIFICARE</a>
+    <a class="w3-button w3-bar-item" th:href="@{login}">CONTUL TAU</a>
+    <div sec:authorize="isAuthenticated()" class="w3-button w3-bar-item" >BILETE CUMPARATE</div>
 
 </nav>
 
