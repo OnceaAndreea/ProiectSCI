@@ -34,6 +34,8 @@ public class MainController {
         if (result.hasErrors()) {
             return "home-page";
         }
+        System.out.println("data "+busRoute.getDepartureDate());
+
         model.addAttribute("busRoutes", busRouteService.getAllRoutes(busRoute.getDeparture(), busRoute.getArrival(), busRoute.getDepartureDate()));
         return "routes";
     }

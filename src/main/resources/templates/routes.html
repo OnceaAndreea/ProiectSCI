@@ -1,34 +1,68 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
-    <link href="../static/css/home.css" th:href="@{/css/home.css}" rel="stylesheet"/>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml"
+                xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
     <head>
         <meta charset="UTF-8">
-        <title>Title</title>
+        <link th:href="@{/css/style.css}" rel="stylesheet"/>
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/3/w3.css">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     </head>
+
     <body>
 
-        <div th:switch="${busRoutes}" xmlns:th="http://www.w3.org/1999/xhtml">
+    <div class="header-back">
+        <!-- Logo -->
+        <div class="w3-container w3-center w3-content" style="max-width:600px">
+            <img class="myBuses" style="width:25%"  th:src="@{/img/logo3.png}" alt="memorynotfound logo"/>
+        </div>
+
+        <!-- Navigation bar-->
+        <nav class="w3-bar w3-transparent">
+            <a href="#curse" class="w3-button w3-bar-item">CURSE</a>
+            <a href="#despreNoi" class="w3-button w3-bar-item">DESPRE NOI</a>
+            <a href="#contact" class="w3-button w3-bar-item">CONTACT</a>
+            <a href="#cariere" class="w3-button w3-bar-item">CARIERE</a>
+            <a class="w3-button w3-bar-item" th:href="@{login}">CONTUL TAU</a>
+            <div sec:authorize="isAuthenticated()" class="w3-button w3-bar-item" >BILETE CUMPARATE</div>
+
+        </nav>
+    </div>
+     <div th:switch="${busRoutes}">
             <h2 th:case="null">No available routes!</h2>
             <div th:case="*">
-                <h2>Available routes with bus</h2>
+
+             <div class="d-flex justify-content-center ">
+                 <div class="d-inline display-arrow" th:text="${busRoutes.get(0).getDeparture()}" ></div>
+                 <div class="d-inline display-arrow" > →</div>
+                 <div class="d-inline display-arrow" th:text="${busRoutes.get(0).getArrival()}"></div>
+                 <div class="d-block display-arrow" th:text="${busRoutes.get(0).getDepartureDate()}"></div>
+             </div>
+
                 <div>
-                    <table>
+                    <table class="table-allign">
                         <thead>
-                            <tr>
+                            <tr class="table-active">
                                 <th>Plecare</th>
                                 <th>Sosire</th>
-                                <th>Ora de plecare</th>
-                                <th>Data plecarii</th>
                                 <th>Distanta</th>
                                 <th>Pret</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr th:each="route : ${busRoutes}">
-                                <td th:text="${route.getDeparture()+route.getDepartureStation()}"></td>
-                                <td th:text="${route.getArrival()+route.getArrivalStation()}"></td>
-                                <td th:text="${route.getDepartureTime()}"></td>
-                                <td th:text="${route.getArrivalTime()}"></td>
+                            <tr class="table-info" th:each="route : ${busRoutes}">
+                            <td>
+                                <div class="font-weight-bold" th:text="${route.getDepartureTime()}"> </div>
+                                <div class="d-inline" th:text="${route.getDeparture()}"> </div>
+                                <div class="d-inline"> - </div>
+                                <div class="d-inline" th:text="${route.getDepartureStation()}"> </div>
+                            </td>
+                                <td>
+                                    <div class="font-weight-bold" th:text="${route.getArrivalTime()}"> </div>
+                                    <div class="d-inline" th:text="${route.getArrival()}"></div>
+                                    <div class="d-inline"> - </div>
+                                    <div class="d-inline" th:text="${route.getArrivalStation()}"></div>
+                                </td>
                                 <td th:text="${route.getDistance()}"></td>
                                 <td th:text="${route.getPrice()}"></td>
                                 <td><input type="submit" value="Cumpara bilet" name="buy"></td>
@@ -37,11 +71,8 @@
                     </table>
                 </div>
             </div>
-            <form>
-                <input type="submit" name="showAll" value="All Routes">
-                <input type="submit" name="backBtn" value="Back" >
-            </form>
 
-        </div>
+
+     </div>
     </body>
 

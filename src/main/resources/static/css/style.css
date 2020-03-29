@@ -113,3 +113,25 @@ body {
  background-image: url('logo3.jpg');
  width: 25%;
 }
+
+.station-wrapper{
+display: inline-block;
+}
+
+.display-arrow{
+padding:0 5px;
+margin-bottom:73px;
+margin-top:115px;
+font-size:24px
+}
+
+.table-allign{
+  border-radius: 5px;
+  width: 50%;
+  margin: 0px auto;
+  float: none;
+}
+
+.header-back{
+ background-image: url('back1.jpeg');
+ }
