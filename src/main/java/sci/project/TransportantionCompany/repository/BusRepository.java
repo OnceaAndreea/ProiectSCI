@@ -5,5 +5,5 @@ import org.springframework.stereotype.Repository;
 import sci.project.TransportantionCompany.model.Bus;
 
 @Repository
-public interface BusRepository extends JpaRepository<Bus,Integer> {
+public interface BusRepository extends JpaRepository<Bus,String> {
 }

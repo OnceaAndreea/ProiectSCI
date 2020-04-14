@@ -1,12 +1,16 @@
 package sci.project.TransportantionCompany.model;
 
 import javax.persistence.*;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 @Entity
 @Table(name = "busRoute")
-public class BusRoute {
+public class BusRoute implements Comparable<BusRoute> {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -16,7 +20,7 @@ public class BusRoute {
     @Column(name = "departure", nullable = false)
     private String departure;
 
-    @Column(name= "departure_station", nullable=false)
+    @Column(name = "departure_station", nullable = false)
     private String departureStation;
 
     @Column(name = "arrival", nullable = false)
@@ -40,11 +44,15 @@ public class BusRoute {
     @Column(name = "price", nullable = false)
     private double price;
 
-    // mai multe rute pot fi facute de acelasi bus(in momente de timp diferite)
-    //fiecare busRoute are toate informatiile despre bus-ul care o face
+    @Column(name = "available_tickets", nullable = false)
+    private int numberOfAvailableTickets;
+
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "bus_id", nullable = false)
+    @JoinColumn(name = "bus_id", columnDefinition="VARCHAR(64)", nullable = false)
     private Bus bus;
+
+    public BusRoute() {
+    }
 
     public int getId() {
         return id;
@@ -108,7 +116,7 @@ public class BusRoute {
 
     public void setDepartureDate(String departureDate) {
         this.departureDate = departureDate;
-}
+    }
 
     public String getDepartureStation() {
         return departureStation;
@@ -124,5 +132,26 @@ public class BusRoute {
 
     public void setArrivalStation(String arrivalStation) {
         this.arrivalStation = arrivalStation;
+    }
+
+    public int getNumberOfAvailableTickets() {
+        return numberOfAvailableTickets;
+    }
+
+    public void setNumberOfAvailableTickets(int numberOfAvailableTickets) {
+        this.numberOfAvailableTickets = numberOfAvailableTickets;
+    }
+
+    public Bus getBus() {
+        return bus;
+    }
+
+    public void setBus(Bus bus) {
+        this.bus = bus;
+    }
+
+    @Override
+    public int compareTo(BusRoute busRoute) {
+        return this.departureTime.compareTo(busRoute.departureTime);
     }
 }

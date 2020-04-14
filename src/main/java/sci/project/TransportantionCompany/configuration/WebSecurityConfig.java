@@ -17,7 +17,6 @@ import sci.project.TransportantionCompany.service.user.UserService;
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
-
     @Autowired
     private UserService userService;
 
@@ -25,14 +24,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
-//                .antMatchers( "/",
-//                        "/registration**",
-//                        "/js/**",
-//                        "/css/**",
-//                        "/img/**",
-//                        "/webjars/**")
-
- //               .permitAll()
                 .antMatchers("/").permitAll()
                 .antMatchers("/registration").permitAll()
                 .antMatchers("/js/**").permitAll()
@@ -52,7 +43,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
                 .logoutSuccessUrl("/login?logout")
                 .permitAll();
-
+//.access("hasRole('ROLE_ADMIN')")
     }
 
     @Bean

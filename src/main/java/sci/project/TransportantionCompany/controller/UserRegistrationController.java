@@ -29,7 +29,6 @@ public class UserRegistrationController {
         return "registration";
     }
 
-
     @PostMapping("/registration")
     public String registerUserAccount(@ModelAttribute("user") @Valid UserRegistrationDto userDto,
                                       BindingResult result) {

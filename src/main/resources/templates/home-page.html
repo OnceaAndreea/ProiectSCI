@@ -14,19 +14,29 @@
 <div class="header-back">
 <!-- Logo -->
 <div class="w3-container w3-center w3-content" style="max-width:600px">
-    <img class="myBuses" style="width:25%"  th:src="@{/img/logo3.png}" alt="memorynotfound logo"/>
+    <img  class="logo-stil" th:src="@{/img/logo3.png}" alt="memorynotfound logo"/>
 </div>
 
 <!-- Navigation bar-->
-<nav class="w3-bar w3-transparent">
-    <a href="#curse" class="w3-button w3-bar-item">CURSE</a>
-    <a href="#despreNoi" class="w3-button w3-bar-item">DESPRE NOI</a>
-    <a href="#contact" class="w3-button w3-bar-item">CONTACT</a>
-    <a href="#cariere" class="w3-button w3-bar-item">CARIERE</a>
-    <a class="w3-button w3-bar-item" th:href="@{login}">CONTUL TAU</a>
-    <div sec:authorize="isAuthenticated()" class="w3-button w3-bar-item" >BILETE CUMPARATE</div>
+    <div class="navibar">
+        <a href="#home">Acasa</a>
+        <a href="#news">Rute</a>
+        <div class="drpdown">
+            <button class="drpbtn">Companie
+                <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="drpdown-content">
+                <a href="#">Contact</a>
+                <a href="#">Despre Noi</a>
+                <a href="#">Cariere</a>
+            </div>
+        </div>
+        <a th:href="@{login}" sec:authorize="isAnonymous()" >Autentificare</a>
+        <a href="#tickets" sec:authorize="isAuthenticated()" >Bilete Cumparate</a>
+        <a th:href="@{/administration}" sec:authorize="hasRole('ROLE_ADMIN')" >Administrare</a>
+        <a th:href="@{/logout}" sec:authorize="isAuthenticated()" >Deconectare</a>
 
-</nav>
+    </div>
 </div>
 
 <!-- Text & Autobuze -->

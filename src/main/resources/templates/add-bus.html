@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+  <div>
+      <div th:if="${param.success}">
+          <div class="alert alert-info">Autocarul a fost inregistrat cu succes!</div>
+      </div>
+
+      <div>
+          <form action="#" th:action="@{/addBus}" th:object="${bus}" method="post">
+              <div>
+                  <label for="id" >Numar de inregistrare</label>
+                  <input type="text" th:field="*{id}" id="id" >
+                  <span th:if="${#fields.hasErrors('id')}" th:errors="*{id}"></span>
+              </div>
+              <div>
+                  <label for="numberOfSeats" >Numar locuri</label>
+                  <input type="text" th:field="*{numberOfSeats}" id="numberOfSeats" >
+                  <span th:if="${#fields.hasErrors('numberOfSeats')}" th:errors="*{numberOfSeats}"></span>
+              </div>
+              <input type="submit" name="addNewBus" value="Adauga autocar">
+          </form>
+      </div>
+  </div>
+
+</body>
+</html>

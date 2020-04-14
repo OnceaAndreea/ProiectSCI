@@ -2,6 +2,7 @@ package sci.project.TransportantionCompany.model;
 
 import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 @Entity
@@ -9,15 +10,12 @@ import java.util.List;
 public class Bus {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id",nullable = false)
-    private int id;
+    @Column(name = "id", unique = true, columnDefinition = "VARCHAR(64)", nullable = false)
+    private String id;
 
-    @Column(name= "number_of_available_seats",nullable=false)
-    private int numberOfAvailableSeats;
+    @Column(name = "number_of_seats", nullable = false)
+    private int numberOfSeats;
 
-    //un bus poate face mai multe rute (in zile diferite,ore,etc)
-    //un bus are o lista de rute pe care le poate face
     @OneToMany
             (
                     mappedBy = "bus",
@@ -25,5 +23,50 @@ public class Bus {
                     orphanRemoval = true
             )
     private List<BusRoute> routes = new ArrayList<>();
+
+    public Bus() {
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public int getNumberOfSeats() {
+        return numberOfSeats;
+    }
+
+    public void setNumberOfSeats(int numberOfSeats) {
+        this.numberOfSeats = numberOfSeats;
+    }
+
+    public List<BusRoute> getRoutes() {
+        return routes;
+    }
+
+    public void setRoutes(List<BusRoute> routes) {
+        this.routes = routes;
+    }
+
+    public void assignRouteToBus(BusRoute busRoute) {
+        this.routes.add(busRoute);
+    }
+
+    public List<BusRoute> getRoutesFromGivenDate(String date) {
+
+        List<BusRoute> matchingRoutes = new ArrayList<>();
+
+        for (int i = 0; i < this.getRoutes().size(); i++)
+            if (this.getRoutes().get(i).getDepartureDate().equals(date))
+                matchingRoutes.add(this.getRoutes().get(i));
+
+        Collections.sort(matchingRoutes);
+
+       return matchingRoutes;
+
+    }
 
 }

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+<div th:switch="${buses.size()}" xmlns:th="http://www.w3.org/1999/xhtml">
+    <h2 th:case="'0'">Nu exista autocare disponibile</h2>
+    <div th:case="*">
+        <h2>Toate autocarele companiei</h2>
+        <table>
+            <thead>
+            <tr>
+                <th>Numarul de inregistrare</th>
+                <th>Numar de locuri</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="bus:${buses}">
+                <td th:text="${bus.getId()}"></td>
+                <td th:text="${bus.getNumberOfSeats()}"></td>
+                <td><a th:href="@{/editBus/{id}(id=${bus.id})}">Edit</a></td>
+                <td><a th:href="@{/deleteBus/{id}(id=${bus.id})}">Delete</a></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+</body>

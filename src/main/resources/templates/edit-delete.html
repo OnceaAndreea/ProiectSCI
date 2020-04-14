@@ -1,0 +1,49 @@
+<!DOCTYPE html >
+<html lang="en"
+      xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+
+<div th:switch="${busRoutes.size()}" >
+
+    <div th:case="'0'"> Nu exista nicio ruta disponibila!</div>
+
+    <div th:case="*">
+        <h2>Toate rutele companiei</h2>
+        <table>
+            <thead>
+            <tr>
+                <th>Data cursei</th>
+                <th>Orasul de plecare</th>
+                <th>Statia de plecare</th>
+                <th>Ora de plecare</th>
+                <th>Orasul de sosire</th>
+                <th>Statia de sosire</th>
+                <th>Ora de sosire</th>
+                <th>Distanta</th>
+                <th>Pret</th>
+                <th>Autocarul care executa cursa</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="busRoute : ${busRoutes}">
+                <td th:text="${busRoute.getDepartureDate()}"></td>
+                <td th:text="${busRoute.getDeparture()}"></td>
+                <td th:text="${busRoute.getDepartureStation()}"></td>
+                <td th:text="${busRoute.getDepartureTime()}"></td>
+                <td th:text="${busRoute.getArrival()}"></td>
+                <td th:text="${busRoute.getArrivalStation()}"></td>
+                <td th:text="${busRoute.getArrivalTime()}"></td>
+                <td th:text="${busRoute.getDistance()}"></td>
+                <td th:text="${busRoute.getPrice()}"></td>
+                <td th:text="${busRoute.getBus().getId()}"></td>
+                <td><a th:href="@{/edit/{id}(id=${busRoute.id})}">Edit</a></td>
+                <td><a th:href="@{/delete/{id}(id=${busRoute.id})}">Delete</a></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+</body>

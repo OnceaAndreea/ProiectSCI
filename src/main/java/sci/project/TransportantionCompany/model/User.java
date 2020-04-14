@@ -1,7 +1,5 @@
 package sci.project.TransportantionCompany.model;
 
-import sci.project.TransportantionCompany.model.enums.TranspUserRole;
-
 import javax.persistence.*;
 import javax.validation.constraints.AssertTrue;
 import javax.validation.constraints.Email;
@@ -48,15 +46,6 @@ public class User {
                     orphanRemoval = true
             )
     private List<BusTicket> busTickets = new ArrayList<>();
-
-    //un user poate avea mai multe trainTickets
-    @OneToMany
-            (
-                    mappedBy = "user",
-                    cascade = CascadeType.ALL,
-                    orphanRemoval = true
-            )
-    private List<TrainTicket> trainTickets = new ArrayList<>();
 
     public User() {}
 

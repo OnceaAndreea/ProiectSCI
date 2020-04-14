@@ -10,7 +10,4 @@ import java.util.List;
 @Repository
 public interface BusRouteRepository extends JpaRepository<BusRoute,Integer> {
 
-    List<BusRoute> getAllByDepartureAndArrival(String departure,String arrival);
-    List<BusRoute> getAllByDepartureDate(String date);
-
 }

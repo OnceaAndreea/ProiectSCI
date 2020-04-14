@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+
+  <div>
+      <form action="#" th:action="@{/buy}" th:object="${busTicket}" method="post">
+
+          <div th:text="${busTicket.getDeparture()}" > </div>
+          <div th:text="${busTicket.getDepartureStation()}" > </div>
+          <div th:text="${busTicket.getDepartureTime()}" > </div>
+
+          <div th:text="${busTicket.getArrivalStation()}" > </div>
+          <div th:text="${busTicket.getArrivalTime()}"> </div>
+          <div th:text="${busTicket.getDepartureDate()}"> </div>
+          <div th:text="${busTicket.getDistance()}"> </div>
+          <input type="hidden" th:field="*{departure}" >
+          <input type="hidden" th:field="*{departureStation}" >
+          <input type="hidden" th:field="*{departureTime}" >
+          <input type="hidden" th:field="*{arrival}" >
+          <input type="hidden" th:field="*{arrivalStation}" >
+          <input type="hidden" th:field="*{arrivalTime}" >
+          <input type="hidden" th:field="*{departureDate}" >
+          <input type="hidden" th:field="*{distance}" >
+          <input type="hidden" th:field="*{price}" >
+          <div  th:object="${ticketDetails}">
+              <input type="text" th:field="*{quantity}" >
+          </div>
+
+          <input type="submit" name="Buy Ticket" value="Cumpara" >
+      </form>
+
+  </div>
+
+</body>
+</html>

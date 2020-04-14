@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+
+<div>
+    <div th:if="${param.success}">
+        <div class="alert alert-info">Ruta a fost adaugata
+            cu succes!</div>
+    </div>
+
+    <form action="#" th:action="@{/update/{id}(id=${busRoute.id})}" th:object="${busRoute}" method="post">
+        <div>
+            <label for="departure" >Oras de plecare</label>
+            <input type="text" th:field="*{departure}" id="departure" >
+            <span th:if="${#fields.hasErrors('departure')}" th:errors="*{departure}"></span>
+        </div>
+        <div>
+            <label for="departureStation" >Statia de plecare</label>
+            <input type="text" th:field="*{departureStation}" id="departureStation" >
+            <span th:if="${#fields.hasErrors('departureStation')}" th:errors="*{departureStation}"></span>
+        </div>
+        <div>
+            <label for="departureTime" >Ora de plecare</label>
+            <input type="text" th:field="*{departureTime}" id="departureTime" >
+            <span th:if="${#fields.hasErrors('departureTime')}" th:errors="*{departureTime}"></span>
+        </div>
+        <div>
+            <label for="arrival">Oras de sosire</label>
+            <input type="text" th:field="*{arrival}" id="arrival" >
+            <span th:if="${#fields.hasErrors('arrival')}" th:errors="*{arrival}"></span>
+        </div>
+        <div>
+            <label for="arrivalStation" >Statia de sosire</label>
+            <input type="text" th:field="*{arrivalStation}" id="arrivalStation" >
+            <span th:if="${#fields.hasErrors('arrivalStation')}" th:errors="*{arrivalStation}"></span>
+        </div>
+        <div>
+            <label for="arrivalTime" >Ora de sosire</label>
+            <input type="text" th:field="*{arrivalTime}" id="arrivalTime" >
+            <span th:if="${#fields.hasErrors('arrivalTime')}" th:errors="*{arrivalTime}"></span>
+        </div>
+        <div>
+            <label for="departureDate">Data cursei</label>
+            <input type="date" th:field="*{departureDate}" id="departureDate" >
+            <span th:if="${#fields.hasErrors('departureDate')}" th:errors="*{departureDate}"></span>
+        </div>
+        <div>
+            <label for="distance" >Distanta</label>
+            <input type="text" th:field="*{distance}" id="distance" >
+            <span th:if="${#fields.hasErrors('distance')}" th:errors="*{distance}"></span>
+        </div>
+        <div>
+            <label for="price" >Pret</label>
+            <input type="text" th:field="*{price}" id="price" >
+            <span th:if="${#fields.hasErrors('price')}" th:errors="*{price}"></span>
+        </div>
+        <div>
+            <label for="busId" >Id-ul autobuzului</label>
+            <input type="text" th:field="*{bus}" id="busId" >
+            <span th:if="${#fields.hasErrors('bus')}" th:errors="*{bus}"></span>
+        </div>
+
+        <input type="submit" name="Update Route" value="Salveaza modificari" >
+    </form>
+</div>
+
+
+</body>
+
+</html>
