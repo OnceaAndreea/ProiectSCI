@@ -12,9 +12,11 @@ public interface BusRouteService {
 
     List<BusRoute> getAll();
 
-    List<BusRoute> getAllRoutes(String departure, String arrival, String departureDate);
+    List<BusRoute> getMatchingRoutes(String departure, String arrival, String departureDate);
 
     BusRoute findRouteById(int id);
 
     void deleteRouteById(int id);
+
+    void updateNumberOfAvailableTickets(int id,int quantity);
 }

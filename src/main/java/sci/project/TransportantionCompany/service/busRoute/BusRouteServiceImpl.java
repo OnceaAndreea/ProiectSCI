@@ -29,13 +29,13 @@ public class BusRouteServiceImpl implements BusRouteService {
         return busRouteRepository.findAll();
     }
 
-    public List<BusRoute> getAllRoutes(String departure, String arrival, String departureDate) {
+    public List<BusRoute> getMatchingRoutes(String departure, String arrival, String departureDate) {
 
         List<BusRoute> routes = new ArrayList<>();
         List<BusRoute> allRoutes = busRouteRepository.findAll();
 
         for (int i = 0; i < allRoutes.size(); i++) {
-            if (allRoutes.get(i).getDeparture().equals(departure) && allRoutes.get(i).getArrival().equals(arrival) && allRoutes.get(i).getDepartureDate().equals(departureDate))
+            if (allRoutes.get(i).getDeparture().equals(departure) && allRoutes.get(i).getArrival().equals(arrival) && allRoutes.get(i).getDepartureDate().equals(departureDate) && allRoutes.get(i).getNumberOfAvailableTickets()>0)
                 routes.add(allRoutes.get(i));
         }
 
@@ -55,6 +55,11 @@ public class BusRouteServiceImpl implements BusRouteService {
         }
     }
 
+    @Override
+    public void updateNumberOfAvailableTickets(int id, int quantity) {
+        BusRoute busRoute=busRouteRepository.findById(id).orElse(null);
+        busRoute.updateAvailableTickets(quantity);
+    }
 
 
 }

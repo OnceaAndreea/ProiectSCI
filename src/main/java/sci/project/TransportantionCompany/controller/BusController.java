@@ -33,8 +33,12 @@ public class BusController {
     @PostMapping(value = "/addBus", params = "addNewBus")
     public String addRoute(@ModelAttribute("bus") @Valid Bus bus, BindingResult result, Model model) {
 
+        if(busService.findBusById(bus.getId())!=null){
+            result.rejectValue("id", "error", "Autocarul cu acest numar de inmatriculare a fost deja adaugat!");
+        }
+
         if (result.hasErrors()) {
-            return "admin-page";
+            return "add-bus";
         }
 
         busService.addBus(bus);

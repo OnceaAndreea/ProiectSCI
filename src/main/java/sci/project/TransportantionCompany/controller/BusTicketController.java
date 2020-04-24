@@ -32,46 +32,45 @@ public class BusTicketController {
     @Autowired
     TicketDetailsService ticketDetailsService;
 
-//    @ModelAttribute("busTicket")
-//    public BusTicket busTicket() {
-//        return new BusTicket();
-//    }
-
     @ModelAttribute("ticketDetails")
-     public TicketDetails ticketDetails() {
+    public TicketDetails ticketDetails() {
         return new TicketDetails();
     }
 
     @GetMapping("/buy/{id}")
     public String showBuyTicketForm(@PathVariable("id") int id, Model model) {
         BusRoute busRoute = busRouteService.findRouteById(id);
-        BusTicket busTicket=new BusTicket(busRoute.getDeparture(),busRoute.getDepartureStation(),busRoute.getArrival(),busRoute.getArrivalStation(),busRoute.getDepartureDate(),busRoute.getDepartureTime(),busRoute.getArrivalTime(),busRoute.getDistance(),busRoute.getPrice());
 
-        model.addAttribute("busTicket", busTicket);
+        model.addAttribute("busRoute", busRoute);
         return "buy-ticket";
     }
 
     @PostMapping("/buy")
-    public String buyTicket(@ModelAttribute("busTicket") @Valid BusTicket busTicket,
+    public String buyTicket(@ModelAttribute("busRoute") @Valid BusRoute busRoute,
                             @ModelAttribute("ticketDetails") @Valid TicketDetails ticketDetails,
                             BindingResult result, Model model, Principal principal) {
 
-        if (result.hasErrors()) {
-            return "update-route";
+        if (ticketDetails.getQuantity() > busRoute.getNumberOfAvailableTickets()) {
+
+            result.rejectValue("quantity", "error", "Aceasta cursa mai are doar "+busRoute.getNumberOfAvailableTickets()+" locuri disponibile!");
         }
 
-        User user=userService.findByEmail(principal.getName());
-        busTicket.setUser(user);
-        busTicketService.addBusTicket(busTicket);
+        if (result.hasErrors())
+            return "buy-ticket";
 
-        double totalPrice=ticketDetails.getQuantity()*busTicket.getPrice();
+        User user = userService.findByEmail(principal.getName());
+        BusTicket busTicket = new BusTicket(busRoute.getDeparture(), busRoute.getDepartureStation(), busRoute.getArrival(), busRoute.getArrivalStation(), busRoute.getDepartureDate(), busRoute.getDepartureTime(), busRoute.getArrivalTime(), busRoute.getDistance(), busRoute.getPrice(), user);
+        busTicketService.addBusTicket(busTicket);
+        busRouteService.updateNumberOfAvailableTickets(busRoute.getId(), ticketDetails.getQuantity());
+
+        double totalPrice = ticketDetails.getQuantity() * busRoute.getPrice();
         ticketDetails.setTotal(totalPrice);
         ticketDetails.setBusTicket(busTicket);
         ticketDetailsService.addTicketDetails(ticketDetails);
-
         busTicket.setDetails(ticketDetails);
+        user.assignTicketToUser(busTicket);
 
-        return "edit-delete";
+        return "test";
     }
 
 }

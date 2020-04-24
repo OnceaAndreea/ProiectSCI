@@ -1,12 +1,10 @@
 package sci.project.TransportantionCompany.model;
 
+import org.hibernate.validator.constraints.Range;
+
 import javax.persistence.*;
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "busRoute")
@@ -17,12 +15,14 @@ public class BusRoute implements Comparable<BusRoute> {
     @Column(name = "id", nullable = false)
     private int id;
 
+    @NotEmpty(message = "Camp necompletat! Introduceti orasul de plecare")
     @Column(name = "departure", nullable = false)
     private String departure;
 
     @Column(name = "departure_station", nullable = false)
     private String departureStation;
 
+    @NotEmpty(message = "Camp necompletat! Introduceti orasul de sosire")
     @Column(name = "arrival", nullable = false)
     private String arrival;
 
@@ -32,6 +32,7 @@ public class BusRoute implements Comparable<BusRoute> {
     @Column(name = "departureTime", nullable = false)
     private String departureTime;
 
+    @NotEmpty(message = "Camp necompletat! Introduceti data cursei")
     @Column(name = "departureDate", nullable = false)
     private String departureDate;
 
@@ -148,6 +149,10 @@ public class BusRoute implements Comparable<BusRoute> {
 
     public void setBus(Bus bus) {
         this.bus = bus;
+    }
+
+    public void updateAvailableTickets(int quantity){
+        this.numberOfAvailableTickets=this.numberOfAvailableTickets-quantity;
     }
 
     @Override

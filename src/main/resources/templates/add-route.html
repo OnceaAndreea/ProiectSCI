@@ -2,10 +2,15 @@
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security" >
 <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet"  th:href="@{/css/common.css}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+
+    <script src = "https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</head>
 </head>
 
 <body>
@@ -47,11 +52,9 @@
         <input type="text" th:field="*{arrivalTime}" id="arrivalTime" >
         <span th:if="${#fields.hasErrors('arrivalTime')}" th:errors="*{arrivalTime}"></span>
      </div>
-     <div>
-        <label for="departureDate">Data cursei</label>
-        <input type="date" th:field="*{departureDate}" id="departureDate" >
-        <span th:if="${#fields.hasErrors('departureDate')}" th:errors="*{departureDate}"></span>
-     </div>
+
+     <div th:insert="home-page.html :: date"></div>
+
      <div>
         <label for="distance" >Distanta</label>
         <input type="text" th:field="*{distance}" id="distance" >
@@ -67,12 +70,18 @@
         <input type="text" th:field="*{bus}" id="busId" >
         <span th:if="${#fields.hasErrors('bus')}" th:errors="*{bus}"></span>
      </div>
-
+     <div>
         <input type="submit" name="addNewBusRoute" value="Adauga ruta" >
+     </div>
     </form>
   </div>
 </div>
 
+ <script type="text/javascript">
+   $('.datepicker').datepicker({
+    startDate: new Date()
+   });
+</script>
 
 </body>
 

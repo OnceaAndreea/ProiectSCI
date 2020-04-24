@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import sci.project.TransportantionCompany.model.BusRoute;
-import sci.project.TransportantionCompany.model.BusTicket;
+import sci.project.TransportantionCompany.service.bus.BusService;
 import sci.project.TransportantionCompany.service.busRoute.BusRouteService;
 
 import javax.validation.Valid;
@@ -20,6 +20,9 @@ public class BusRouteController {
 
     @Autowired
     BusRouteService busRouteService;
+
+    @Autowired
+    BusService busService;
 
     @ModelAttribute("busRoute")
     public BusRoute busRoute() {
@@ -34,8 +37,33 @@ public class BusRouteController {
     @PostMapping(value = "/addRoute", params = "addNewBusRoute")
     public String addRoute(@ModelAttribute("busRoute") @Valid BusRoute busRoute, BindingResult result, Model model) {
 
+        if (busRoute.getDepartureStation().isEmpty()) {
+            result.rejectValue("departureStation", "error", "Camp necompletat! Introduceti statia de plecare");
+        }
+
+        if (busRoute.getArrivalStation().isEmpty()) {
+            result.rejectValue("arrivalStation", "error", "Camp necompletat! Introduceti statia de sosire");
+        }
+
+        if (busRoute.getDepartureTime().isEmpty()) {
+            result.rejectValue("departureTime", "error", "Camp necompletat! Introduceti ora de plecare");
+        }
+
+        if (busRoute.getArrivalTime().isEmpty()) {
+            result.rejectValue("arrivalTime", "error", "Camp necompletat! Introduceti ora de sosire");
+        }
+
+        if (busRoute.getDistance()==0) {
+            result.rejectValue("distance", "error", "Camp necompletat! Introduceti distanta cursei");
+        }
+
+        if (busRoute.getPrice()==0) {
+            result.rejectValue("price", "error", "Camp necompletat! Introduceti pretul cursei");
+        }
+
+
         if (result.hasErrors()) {
-            return "admin-page";
+            return "add-route";
         }
 
         busRouteService.addBusRoute(busRoute);
@@ -43,12 +71,8 @@ public class BusRouteController {
     }
 
     @GetMapping("/editOrDelete")
-    public String editOrDelete(@Valid BusRoute busRoute, BindingResult result, Model model) {
-        if (result.hasErrors()) {
-            return "admin-page";
-        }
-        List<BusRoute> testrute=busRouteService.getAll();
-        System.out.println(testrute);
+    public String editOrDelete(Model model) {
+
         model.addAttribute("busRoutes", busRouteService.getAll());
         return "edit-delete";
     }
@@ -88,7 +112,7 @@ public class BusRouteController {
             return "home-page";
         }
 
-        model.addAttribute("busRoutes", busRouteService.getAllRoutes(busRoute.getDeparture(), busRoute.getArrival(), busRoute.getDepartureDate()));
+        model.addAttribute("busRoutes", busRouteService.getMatchingRoutes(busRoute.getDeparture(), busRoute.getArrival(), busRoute.getDepartureDate()));
         return "routes";
     }
 

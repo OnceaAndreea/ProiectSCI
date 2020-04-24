@@ -45,7 +45,7 @@ public class User {
                     cascade = CascadeType.ALL,
                     orphanRemoval = true
             )
-    private List<BusTicket> busTickets = new ArrayList<>();
+    private List<BusTicket> tickets = new ArrayList<>();
 
     public User() {}
 
@@ -102,6 +102,18 @@ public class User {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
+    }
+
+    public List<BusTicket> getTickets() {
+        return tickets;
+    }
+
+    public void setTickets(List<BusTicket> tickets) {
+        this.tickets = tickets;
+    }
+
+    public void assignTicketToUser(BusTicket busTicket){
+        this.tickets.add(busTicket);
     }
 
     @Override

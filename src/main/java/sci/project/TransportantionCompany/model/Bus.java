@@ -1,6 +1,10 @@
 package sci.project.TransportantionCompany.model;
 
+import org.hibernate.validator.constraints.Range;
+
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -11,10 +15,13 @@ public class Bus {
 
     @Id
     @Column(name = "id", unique = true, columnDefinition = "VARCHAR(64)", nullable = false)
+    @NotEmpty(message="Camp necompletat! Introduceti numarul de inmatriculare al autocarului")
     private String id;
 
     @Column(name = "number_of_seats", nullable = false)
-    private int numberOfSeats;
+    @NotNull(message="Camp necompletat! Introduceti numarul de locuri")
+    @Range(min = 48,max=50,message="Autocarele TransDor au minim 48 de locuri si maxim 50!")
+    private Integer numberOfSeats;
 
     @OneToMany
             (
@@ -35,11 +42,11 @@ public class Bus {
         this.id = id;
     }
 
-    public int getNumberOfSeats() {
+    public Integer getNumberOfSeats() {
         return numberOfSeats;
     }
 
-    public void setNumberOfSeats(int numberOfSeats) {
+    public void setNumberOfSeats(Integer numberOfSeats) {
         this.numberOfSeats = numberOfSeats;
     }
 

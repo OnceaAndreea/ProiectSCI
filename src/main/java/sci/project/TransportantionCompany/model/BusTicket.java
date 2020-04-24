@@ -50,6 +50,22 @@ public class BusTicket {
             fetch = FetchType.LAZY, optional = false)
     private TicketDetails details;
 
+    public BusTicket(String departure, String departureStation, String arrival, String arrivalStation, String departureDate, String departureTime, String arrivalTime, int distance, double price, User user) {
+        this.departure = departure;
+        this.departureStation = departureStation;
+        this.arrival = arrival;
+        this.arrivalStation = arrivalStation;
+        this.departureDate = departureDate;
+        this.departureTime = departureTime;
+        this.arrivalTime = arrivalTime;
+        this.distance = distance;
+        this.price = price;
+        this.user = user;
+    }
+
+    public BusTicket() {
+    }
+
     public String getDeparture() {
         return departure;
     }
@@ -130,25 +146,11 @@ public class BusTicket {
         this.user = user;
     }
 
-
-
     public TicketDetails getDetails() {
         return details;
     }
 
     public void setDetails(TicketDetails details) {
         this.details = details;
-    }
-
-    public BusTicket(String departure, String departureStation, String arrival, String arrivalStation, String departureDate, String departureTime, String arrivalTime, int distance, double price) {
-        this.departure = departure;
-        this.departureStation = departureStation;
-        this.arrival = arrival;
-        this.arrivalStation = arrivalStation;
-        this.departureDate = departureDate;
-        this.departureTime = departureTime;
-        this.arrivalTime = arrivalTime;
-        this.distance = distance;
-        this.price =price;
     }
 }
