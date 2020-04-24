@@ -1,0 +1,23 @@
+.search-container {
+    margin-top: 173px;
+    margin-bottom: 227px;
+}
+
+.road-background {
+   background-image: url("road.jpg");
+}
+
+.footer-background {
+   background-image: url("brasov.jpg");
+}
+
+#search-border {
+   border: 2px solid white;
+   padding: 34px;
+   border-radius: 14px;
+   background: white;
+   align-content: center;
+   width: 60%;
+   margin: 220px;
+   margin-left: 300px;
+}
