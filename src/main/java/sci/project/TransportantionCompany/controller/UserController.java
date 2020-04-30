@@ -1,6 +1,6 @@
 package sci.project.TransportantionCompany.controller;
 
-import dto.UserRegistrationDto;
+import sci.project.TransportantionCompany.dto.UserRegistrationDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,9 +12,10 @@ import sci.project.TransportantionCompany.model.User;
 import sci.project.TransportantionCompany.service.user.UserService;
 
 import javax.validation.Valid;
+import java.security.Principal;
 
 @Controller
-public class UserRegistrationController {
+public class UserController {
 
     @Autowired
     private UserService userService;
@@ -25,7 +26,7 @@ public class UserRegistrationController {
     }
 
     @GetMapping("/registration")
-    public String showRegistrationForm(Model model) {
+    public String showRegistrationForm() {
         return "registration";
     }
 
@@ -46,5 +47,12 @@ public class UserRegistrationController {
         return "redirect:/registration?success";
     }
 
+    @GetMapping("/profile")
+    public String showProfileForm(Principal principal, Model model) {
+
+        User user = userService.findByEmail(principal.getName());
+        model.addAttribute("currentUser", user);
+        return "my-profile";
+    }
 
 }

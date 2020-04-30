@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>My Profile</title>
+    <link rel="stylesheet" th:href="@{/css/common.css}">
+    <link rel="stylesheet" th:href="@{/css/myprofile.css}">
+    <link href="https://www.w3schools.com/w3css/3/w3.css" rel="stylesheet">
+    <link crossorigin="anonymous" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" rel="stylesheet">
+</head>
+
+<body>
+<div th:insert="home-page.html :: navigation"></div>
+
+<section class="profile-container">
+
+    <div class="user-dashboard-menu">
+        <ul class="user-dashboard-menu-items">
+            <li class="user-dashboard-menu-item">
+                <a class="user-dashboard-menu-item-user" th:href="@{/profile}">My profile</a>
+            </li>
+            <li class="user-dashboard-menu-item">
+                <a class="user-dashboard-menu-item-cart" th:href="@{/mytickets}">My tickets</a>
+            </li>
+            <li class="user-dashboard-menu-item">
+                <a class="user-dashboard-menu-item-admin" sec:authorize="hasRole('ROLE_ADMIN')"
+                   th:href="@{/administration}">Administrare</a>
+            </li>
+            <li class="user-dashboard-menu-item">
+                <a class="user-dashboard-menu-item-logout logout-element" th:href="@{/logout}">Logout</a>
+            </li>
+        </ul>
+    </div>
+    <div class="line-separator"></div>
+    <div class="user-dashboard-content">
+        <div class="user-dashboard-title">My profile</div>
+        <div class="user-details">
+            <div class="detail-item">
+                <div class="display-item color-item"> First Name:</div>
+                <div class="display-item font-item" th:text="${currentUser.getFirstName()}"></div>
+            </div>
+            <div class="detail-item">
+                <div class="display-item color-item"> Last Name:</div>
+                <div class="display-item font-item" th:text="${currentUser.getLastName()}"></div>
+            </div>
+            <div class="detail-item color-item">
+                <div class="display-item"> E-mail address:</div>
+                <div class="display-item font-item" th:text="${currentUser.getEmail()}"></div>
+            </div>
+        </div>
+    </div>
+
+</section>
+</body>
+</html>

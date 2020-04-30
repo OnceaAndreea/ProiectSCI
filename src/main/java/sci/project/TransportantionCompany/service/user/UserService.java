@@ -1,5 +1,5 @@
 package sci.project.TransportantionCompany.service.user;
-import dto.UserRegistrationDto;
+import sci.project.TransportantionCompany.dto.UserRegistrationDto;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import sci.project.TransportantionCompany.model.User;
 

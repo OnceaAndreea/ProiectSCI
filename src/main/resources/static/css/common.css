@@ -134,7 +134,7 @@ font-size:24px
   font-size: 16px;
   color: white;
   text-align: center;
-  padding: 14px 16px;
+  padding: 14px 45px;
   text-decoration: none;
 }
 
@@ -148,7 +148,7 @@ font-size:24px
   border: none;
   outline: none;
   color: white;
-  padding: 14px 16px;
+  padding: 14px 45px;
   background-color: inherit;
   font-family: inherit;
   margin: 0;
@@ -188,11 +188,21 @@ font-size:24px
 }
 
 .logo-stil{
-    width: 20%;
-    margin-top: 15px;
-    margin-bottom: 15px;
+  width: 20%;
+  margin-top: 15px;
+  margin-bottom: 15px;
 }
 .group-for-date {
-    display: inline-table;
-    width: 20px;
+  display: inline-table;
+  width: 20px;
 }
+
+.navigation-for-all {
+  margin-left: 90px;
+}
+
+.navigation-for-registered {
+  float: right;
+  margin-right: 90px;
+}
+

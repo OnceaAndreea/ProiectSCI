@@ -1,0 +1,137 @@
+body {
+  font: 14px/1.6 'Roboto Condensed', 'Arial', sans-serif;
+}
+
+.route-container{
+   margin-top: 64px;
+}
+
+.title-container {
+   text-align: center;
+   margin-bottom: 20px;
+}
+
+.text-item {
+   color: #225450;
+   font-size: 25px;
+   font-weight: bold;
+}
+
+.date-item {
+   color: #225450;
+   margin-top: 8px;
+   font-size: 22px;
+}
+
+.content-container {
+   width: 66%;
+   margin: 0 auto;
+
+}
+
+.header-content {
+   text-align: center;
+   color: #5a8680;
+   font-size: 18px;
+   display: flex;
+   width: 79%;
+   justify-content: space-between;
+}
+
+.margin-item {
+  margin-left: 55px;
+}
+
+.divider {
+  border-top: 1px solid #5a8680;
+  margin-top: 6px;
+}
+
+.matching-routes-items {
+  margin-top: 15px;
+  font-size :15px;
+}
+
+.matching-route-item {
+  display: flex;
+
+}
+
+.departure-hour-detail {
+  font-weight: bold;
+  margin-bottom: 10px
+}
+
+.hours-details {
+  padding-right: 15px;
+}
+
+.departure-details {
+  margin-bottom: 10px;
+}
+
+.icons-margin {
+  margin-top: 15px;
+}
+.icon-padding {
+  padding-right: 16px;
+}
+
+.departure-arrival-details {
+  display: flex;
+  width: 42%
+}
+
+.distance-width {
+  width: 29%;
+}
+
+.price-width {
+  width: 9%;
+  padding-top: 4px;
+  padding-left: 4px;
+}
+
+.advert {
+ color: #bd2929;
+ margin-top: 45px;
+ font-size: 14px;
+}
+
+.icon-detail .icon-text {
+  visibility: hidden;
+  width: 75px;
+  text-align: center;
+  background-color: #e2e0e0;
+  color: #fff;
+  border-radius: 10px;
+  padding: 5px 0;
+  position: absolute;
+  z-index: 1;
+  margin-top: 23px;
+  margin-left: -46px;
+}
+
+.icon-detail:hover .icon-text {
+  visibility: visible;
+}
+
+.arrival-hour-detail {
+   font-weight: bold;
+}
+
+#buy-ticket-border {
+   border: 2px solid white;
+   padding: 20px;
+   border-radius: 10px;
+   background: #53d453;
+   width: 13%;
+   margin: auto;
+   text-align: center;
+   padding-top: 9px;
+   padding-bottom: 9px;
+   color: white;
+   text-decoration: none;
+
+}
+

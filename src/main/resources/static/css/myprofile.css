@@ -1,0 +1,109 @@
+.user-dashboard-menu {
+    margin-bottom: 24px;
+    border-bottom: 0px solid #c1c1c1;
+    width: 15%;
+}
+
+.user-dashboard-menu-items {
+   margin: 14px 0px;
+}
+
+ul {
+   list-style :none;
+}
+
+.user-dashboard-menu-item {
+   margin-bottom: 15px;
+   line-height: 20px;
+   vertical-align: middle;
+}
+
+.user-dashboard-menu-item a {
+   position: relative;
+   padding-left: 30px;
+   font-size: 16px;
+   font-weight: bold;
+   color: #767676;
+   text-decoration: none;
+   display: inline-block;
+}
+
+.user-dashboard-menu-item a:hover {
+   color: #767676;
+   text-decoration: none;
+}
+
+.user-dashboard-menu-item a::before {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    display: inline-block;
+    content: "";
+    width: 20px;
+    height: 20px;
+    float: left;
+    margin: -10px 6px 0 0;
+}
+
+.user-dashboard-menu-item-user::before {
+    background: url("user.svg") no-repeat;
+}
+
+.user-dashboard-menu-item-cart::before {
+    background: url("cart.svg") no-repeat;
+}
+
+.user-dashboard-menu-item-logout::before {
+    background: url("logout.svg") no-repeat;
+}
+
+.user-dashboard-menu-item-admin::before {
+    background: url("admin.svg") no-repeat;
+}
+
+.logout-element {
+   margin-top: 30px;
+}
+
+.profile-container {
+   margin-top: 62px;
+   margin-left: 35px;
+   display: flex;
+}
+
+.line-separator {
+   border-left: 1px solid green;
+   height: 600px;
+}
+
+.user-dashboard-content {
+   margin-left: 40px;
+}
+
+.user-dashboard-title {
+   font-size: 21px;
+   font-weight: normal;
+   color:#302e3c;
+   margin-top: 7px;
+  }
+
+.user-details {
+   margin-top: 29px;
+   font-size: 16px;
+}
+
+.display-item {
+   display: inline;
+}
+
+.detail-item {
+   margin-bottom: 14px;
+}
+
+.font-item {
+  font-weight: bold;
+}
+
+.color-item {
+  color: #524750;
+}

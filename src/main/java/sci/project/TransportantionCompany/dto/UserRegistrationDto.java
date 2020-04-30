@@ -1,7 +1,7 @@
-package dto;
+package sci.project.TransportantionCompany.dto;
 
 
-import constraint.FieldMatch;
+import sci.project.TransportantionCompany.constraint.FieldMatch;
 
 import javax.validation.constraints.AssertTrue;
 import javax.validation.constraints.Email;

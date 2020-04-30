@@ -31,17 +31,17 @@ public class BusRouteServiceImpl implements BusRouteService {
 
     public List<BusRoute> getMatchingRoutes(String departure, String arrival, String departureDate) {
 
-        List<BusRoute> routes = new ArrayList<>();
+        List<BusRoute> matchingRoutes = new ArrayList<>();
         List<BusRoute> allRoutes = busRouteRepository.findAll();
 
         for (int i = 0; i < allRoutes.size(); i++) {
             if (allRoutes.get(i).getDeparture().equals(departure) && allRoutes.get(i).getArrival().equals(arrival) && allRoutes.get(i).getDepartureDate().equals(departureDate) && allRoutes.get(i).getNumberOfAvailableTickets()>0)
-                routes.add(allRoutes.get(i));
+                matchingRoutes.add(allRoutes.get(i));
         }
 
-        Collections.sort(routes);
+        Collections.sort(matchingRoutes);
 
-        return routes;
+        return matchingRoutes;
     }
 
     public BusRoute findRouteById(int id) {

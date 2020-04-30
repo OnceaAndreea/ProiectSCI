@@ -1,62 +1,94 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml"
-                xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<html lang="en" xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+                 xmlns:th="http://www.w3.org/1999/xhtml">
 
-    <head>
-        <meta charset="UTF-8">
-        <link rel="stylesheet"  th:href="@{/css/common.css}">
-        <link rel="stylesheet" href="https://www.w3schools.com/w3css/3/w3.css">
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" th:href="@{/css/common.css}">
+    <link rel="stylesheet" th:href="@{/css/routes.css}">
+    <link href="https://www.w3schools.com/w3css/3/w3.css" rel="stylesheet">
+    <link crossorigin="anonymous" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" rel="stylesheet">
 
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
-    </head>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+</head>
 
-    <body>
-    <div th:insert="home-page.html :: navigation"> </div>
+<body>
+<div th:insert="home-page.html :: navigation"></div>
 
-     <div th:switch="${busRoutes.size()}">
-            <h2 th:case="'0'">Nu exista rute disponibile!</h2>
-            <div th:case="*">
+<div class="route-container" th:switch="${busRoutes.size()}">
+    <h2 th:case="'0'">Nu exista rute disponibile!</h2>
+    <div th:case="*">
 
-             <div class="d-flex justify-content-center ">
-                 <div class="d-inline display-arrow" th:text="${busRoutes.get(0).getDeparture()}" ></div>
-                 <div class="d-inline display-arrow" > →</div>
-                 <div class="d-inline display-arrow" th:text="${busRoutes.get(0).getArrival()}"></div>
-                 <div class="d-block display-arrow" th:text="${busRoutes.get(0).getDepartureDate()}"></div>
-             </div>
+        <div class="title-container">
+            <div class="d-inline text-item" th:text="${busRoutes.get(0).getDeparture()}"></div>
+            <div class="d-inline text-item"> →</div>
+            <div class="d-inline text-item" th:text="${busRoutes.get(0).getArrival()}"></div>
+            <div class="date-item" th:text="${busRoutes.get(0).getDepartureDate()}"></div>
+        </div>
 
-                <div>
-                    <table class="table-allign">
-                        <thead>
-                            <tr class="table-active">
-                                <th>Plecare</th>
-                                <th>Sosire</th>
-                                <th>Distanta</th>
-                                <th>Pret</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr class="table-info" th:each="route : ${busRoutes}">
-                            <td>
-                                <div class="font-weight-bold" th:text="${route.getDepartureTime()}"> </div>
-                                <div class="d-inline" th:text="${route.getDeparture()}"> </div>
-                                <div class="d-inline"> - </div>
-                                <div class="d-inline" th:text="${route.getDepartureStation()}"> </div>
-                            </td>
-                                <td>
-                                    <div class="font-weight-bold" th:text="${route.getArrivalTime()}"> </div>
-                                    <div class="d-inline" th:text="${route.getArrival()}"></div>
-                                    <div class="d-inline"> - </div>
-                                    <div class="d-inline" th:text="${route.getArrivalStation()}"></div>
-                                </td>
-                                <td th:text="${route.getDistance()}"></td>
-                                <td th:text="${route.getPrice()}"></td>
-                                <td><a th:href="@{/buy/{id}(id=${route.id})}">Cumpara bilet</a></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
+        <div class="content-container">
+
+            <div class="header-content">
+                <div>Departure/Arrival</div>
+                <div>Distance</div>
+                <div>Price</div>
             </div>
-     </div>
+
+            <div class="divider"></div>
+
+            <div class="matching-routes-items" th:each="route : ${busRoutes}">
+
+                <div class="matching-route-item">
+
+                    <div class="departure-arrival-details">
+                        <div class="hours-details">
+                            <div class="departure-hour-detail" th:text="${route.getDepartureTime()}"></div>
+                            <div class="arrival-hour-detail" th:text="${route.getArrivalTime()}"></div>
+                            <div class="icons-margin">
+                                <div class="d-inline icon-detail fas fa-wifi icon-padding">
+                                    <a class="icon-text">Free WI-FI</a>
+                                </div>
+                                <div class="d-inline icon-detail fas fa-plug">
+                                <a class="icon-text">Outlets</a>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="departure-details">
+                                <div class="d-inline" th:text="${route.getDeparture()}"></div>
+                                <div class="d-inline">-</div>
+                                <div class="d-inline" th:text="${route.getDepartureStation()}"></div>
+                            </div>
+                            <div>
+                                <div class="d-inline" th:text="${route.getArrival()}"></div>
+                                <div class="d-inline">-</div>
+                                <div class="d-inline" th:text="${route.getArrivalStation()}"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div  th:text="${route.getDistance()}"></div>
+                    <a class="distance-width">km</a>
+                    <div  th:text="${route.getPrice()}"></div>
+                    <i class="price-width fas fa-euro-sign"></i>
+                    <div>
+                    <a id="buy-ticket-border" th:href="@{/buy/{id}(id=${route.id})}">buy tickets</a>
+                    <div class="advert" th:if="${route.getNumberOfAvailableTickets()==3}">3 seats left!</div>
+                    <div class="advert" th:if="${route.getNumberOfAvailableTickets()==2}">2 seats left!</div>
+                    <div class="advert" th:if="${route.getNumberOfAvailableTickets()==1}">1 seat left!</div>
+                    </div>
+
+                </div>
+                <div class="divider"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
 </body>
+</html>
 
