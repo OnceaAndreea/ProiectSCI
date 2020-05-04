@@ -35,7 +35,7 @@ body {
    color: #5a8680;
    font-size: 18px;
    display: flex;
-   width: 79%;
+   width: 77%;
    justify-content: space-between;
 }
 
@@ -84,7 +84,7 @@ body {
 }
 
 .distance-width {
-  width: 32%;
+  width: 28%;
 }
 
 .price-width {
