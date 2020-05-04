@@ -14,8 +14,6 @@ public class BusTicket {
     private int id;
 
     @Column(name = "departure", nullable = false)
-//    @NotEmpty(message="Must Not be empty")
-//    @Size(min=3,max=10,message="intre 3 si 10")
     private String departure;
 
     @Column(name = "departure_station", nullable = false)

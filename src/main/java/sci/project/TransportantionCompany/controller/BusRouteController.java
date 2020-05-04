@@ -58,7 +58,7 @@ public class BusRouteController {
         }
 
         if (busRoute.getPrice()==0) {
-            result.rejectValue("price", "error", "Camp necompletat! Introduceti pretul cursei");
+            result.rejectValue("price", "error", "Camp necompletat! Introduceti pretul pentru adulti al cursei");
         }
 
 

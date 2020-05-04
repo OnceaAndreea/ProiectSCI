@@ -52,7 +52,7 @@ public class BusTicketController {
 
         if (ticketDetails.getQuantity() > busRoute.getNumberOfAvailableTickets()) {
 
-            result.rejectValue("quantity", "error", "Aceasta cursa mai are doar "+busRoute.getNumberOfAvailableTickets()+" locuri disponibile!");
+            result.rejectValue("quantity", "error", "Only "+busRoute.getNumberOfAvailableTickets()+" available seats left!");
         }
 
         if (result.hasErrors())

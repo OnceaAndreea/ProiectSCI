@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
-                 xmlns:th="http://www.w3.org/1999/xhtml">
+      xmlns:th="http://www.w3.org/1999/xhtml">
 
 <head>
     <meta charset="UTF-8">
@@ -16,6 +16,7 @@
 
 <body>
 <div th:insert="home-page.html :: navigation"></div>
+ <div>.</div>
 
 <div class="route-container" th:switch="${busRoutes.size()}">
     <h2 th:case="'0'">Nu exista rute disponibile!</h2>
@@ -51,9 +52,8 @@
                                     <a class="icon-text">Free WI-FI</a>
                                 </div>
                                 <div class="d-inline icon-detail fas fa-plug">
-                                <a class="icon-text">Outlets</a>
+                                    <a class="icon-text">Outlets</a>
                                 </div>
-
                             </div>
                         </div>
 
@@ -71,15 +71,15 @@
                         </div>
                     </div>
 
-                    <div  th:text="${route.getDistance()}"></div>
+                    <div th:text="${route.getDistance()}"></div>
                     <a class="distance-width">km</a>
-                    <div  th:text="${route.getPrice()}"></div>
+                    <div th:text="${route.getPrice()}"></div>
                     <i class="price-width fas fa-euro-sign"></i>
                     <div>
-                    <a id="buy-ticket-border" th:href="@{/buy/{id}(id=${route.id})}">buy tickets</a>
-                    <div class="advert" th:if="${route.getNumberOfAvailableTickets()==3}">3 seats left!</div>
-                    <div class="advert" th:if="${route.getNumberOfAvailableTickets()==2}">2 seats left!</div>
-                    <div class="advert" th:if="${route.getNumberOfAvailableTickets()==1}">1 seat left!</div>
+                        <a id="buy-ticket-border" th:href="@{/buy/{id}(id=${route.id})}">buy tickets</a>
+                        <div class="advert" th:if="${route.getNumberOfAvailableTickets()==3}">3 seats left!</div>
+                        <div class="advert" th:if="${route.getNumberOfAvailableTickets()==2}">2 seats left!</div>
+                        <div class="advert" th:if="${route.getNumberOfAvailableTickets()==1}">1 seat left!</div>
                     </div>
 
                 </div>

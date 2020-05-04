@@ -1,54 +1,94 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.thymeleaf.org/extras/spring-security" >
+<html xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet"  th:href="@{/css/common.css}" >
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/3/w3.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" th:href="@{/css/common.css}">
+    <link rel="stylesheet" th:href="@{/css/order.css}">
+    <link href="https://www.w3schools.com/w3css/3/w3.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <link crossorigin="anonymous" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" rel="stylesheet">
 </head>
 
 
 <body>
 
-  <div th:insert="home-page.html :: navigation"> </div>
+<div th:insert="home-page.html :: navigation"></div>
+<div>.</div>
+<div class="order-details">
+    <form action="#" method="post" th:action="@{/buy}" th:object="${busRoute}">
+        <div class="your-order-title">Your Order</div>
+        <div>
+            <div class="date-time-details">
+                <a th:text="${busRoute.getDepartureDate()}"></a>
+                <a>,</a>
+                <a th:text="${busRoute.getDepartureTime()}"></a>
+                <a>-</a>
+                <a th:text="${busRoute.getArrivalTime()}"></a>
+            </div>
 
-  <div>
-      <form action="#" th:action="@{/buy}" th:object="${busRoute}" method="post">
+            <div class="departure-arrival-details">
+                <div>
+                    <div class="margin-right-icon icon-detail fas fa-map-marker-alt">
+                        <a class="icon-text">Departure</a>
+                    </div>
 
-          <div th:text="${busRoute.getDeparture()}" > </div>
-          <div th:text="${busRoute.getDepartureStation()}" > </div>
-          <div th:text="${busRoute.getDepartureTime()}" > </div>
+                    <a th:text="${busRoute.getDeparture()}"></a>
+                    <a>-</a>
+                    <a th:text="${busRoute.getDepartureStation()}"></a>
+                </div>
+                <div>
+                    <div class=" icon-detail fas fa-map-marker-alt">
+                        <a class="icon-text">Arrival</a>
+                    </div>
+                    <a th:text="${busRoute.getArrival()}"></a>
+                    <a>-</a>
+                    <a th:text="${busRoute.getArrivalStation()}"></a>
+                </div>
+            </div>
+            <div class="price-distance-details">
+                <div>
+                    <a class="font-bold">Price</a>
+                    <a th:text="${busRoute.getPrice()}"></a>
+                    <i class="price-width fas fa-euro-sign"></i>
+                </div>
+                <div>
+                    <a class="font-bold">Distance</a>
+                    <a th:text="${busRoute.getDistance()}"></a>
+                    <a> km</a>
+                </div>
+            </div>
+        </div>
 
-          <div th:text="${busRoute.getArrivalStation()}" > </div>
-          <div th:text="${busRoute.getArrivalTime()}"> </div>
-          <div th:text="${busRoute.getDepartureDate()}"> </div>
-          <div th:text="${busRoute.getDistance()}"> </div>
+        <input th:field="*{id}" type="hidden">
+        <input th:field="*{departure}" type="hidden">
+        <input th:field="*{departureStation}" type="hidden">
+        <input th:field="*{departureTime}" type="hidden">
+        <input th:field="*{arrival}" type="hidden">
+        <input th:field="*{arrivalStation}" type="hidden">
+        <input th:field="*{arrivalTime}" type="hidden">
+        <input th:field="*{departureDate}" type="hidden">
+        <input th:field="*{distance}" type="hidden">
+        <input th:field="*{price}" type="hidden">
+        <input th:field="*{numberOfAvailableTickets}" type="hidden">
 
-          <input type="hidden" th:field="*{id}" >
-          <input type="hidden" th:field="*{departure}" >
-          <input type="hidden" th:field="*{departureStation}" >
-          <input type="hidden" th:field="*{departureTime}" >
-          <input type="hidden" th:field="*{arrival}" >
-          <input type="hidden" th:field="*{arrivalStation}" >
-          <input type="hidden" th:field="*{arrivalTime}" >
-          <input type="hidden" th:field="*{departureDate}" >
-          <input type="hidden" th:field="*{distance}" >
-          <input type="hidden" th:field="*{price}" >
-          <input type="hidden" th:field="*{numberOfAvailableTickets}" >
+        <div th:object="${ticketDetails}">
 
-          <div th:object="${ticketDetails}">
+            <div class="divider"></div>
+            <div class="margin-final margin-quantity-details">
+                <label for="quantity">Enter the number of tickets:</label>
+                <input class="quantity" id="quantity" th:field="*{quantity}"/>
+                <p class="advert-message" th:errors="*{quantity}" th:if="${#fields.hasErrors('quantity')}"></p>
+            </div>
+        </div>
 
-              <label for="quantity" class="control-label">Cantitate</label>
-              <input id="quantity" class="form-control" th:field="*{quantity}" />
-              <p th:errors="*{quantity}" th:if="${#fields.hasErrors('quantity')}" style="color:Red;"></p>
-          </div>
+        <input class="margin-final"name="Buy Ticket" type="submit" value="Buy">
 
-          <input type="submit" name="Buy Ticket" value="Cumpara" >
-      </form>
+    </form>
+</div>
 
-  </div>
 
 </body>
 </html>

@@ -2,9 +2,10 @@
 <html xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
       xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>My Profile</title>
+    <title>My Tickets</title>
     <link rel="stylesheet" th:href="@{/css/common.css}">
     <link rel="stylesheet" th:href="@{/css/myprofile.css}">
+    <link rel="stylesheet" th:href="@{/css/tickets.css}">
     <link href="https://www.w3schools.com/w3css/3/w3.css" rel="stylesheet">
     <link crossorigin="anonymous" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" rel="stylesheet">
@@ -12,6 +13,7 @@
 
 <body>
 <div th:insert="home-page.html :: navigation"></div>
+
 
 <section class="profile-container">
 
@@ -34,19 +36,23 @@
     </div>
     <div class="line-separator"></div>
     <div class="user-dashboard-content">
-        <div class="user-dashboard-title">My profile</div>
-        <div class="user-details">
-            <div class="detail-item">
-                <div class="display-item color-item"> First Name:</div>
-                <div class="display-item font-item" th:text="${currentUser.getFirstName()}"></div>
-            </div>
-            <div class="detail-item">
-                <div class="display-item color-item"> Last Name:</div>
-                <div class="display-item font-item" th:text="${currentUser.getLastName()}"></div>
-            </div>
-            <div class="detail-item">
-                <div class="display-item color-item"> E-mail address:</div>
-                <div class="display-item font-item" th:text="${currentUser.getEmail()}"></div>
+        <div class="user-dashboard-title">My tickets</div>
+        <div  class="scroll-down">
+        <div  th:each="ticket : ${tickets}">
+            <div>
+
+                    <a>Date</a>
+                    <a th:text="${ticket.getDepartureDate()}"></a>
+                </div>
+
+                <div>
+                    <a>Departure/Arrival</a>
+                    <a th:text="${ticket.getDepartureTime()}"></a>
+                    <a>-</a>
+                    <a th:text="${ticket.getDeparture()}"></a>
+                    <a>,</a>
+                    <a th:text="${ticket.getDepartureStation()}"></a>
+                </div>
             </div>
         </div>
     </div>

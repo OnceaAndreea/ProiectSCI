@@ -49,7 +49,7 @@ public class BusRoute implements Comparable<BusRoute> {
     private int numberOfAvailableTickets;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "bus_id", columnDefinition="VARCHAR(64)", nullable = false)
+    @JoinColumn(name = "bus_id", columnDefinition = "VARCHAR(64)", nullable = false)
     private Bus bus;
 
     public BusRoute() {
@@ -151,8 +151,8 @@ public class BusRoute implements Comparable<BusRoute> {
         this.bus = bus;
     }
 
-    public void updateAvailableTickets(int quantity){
-        this.numberOfAvailableTickets=this.numberOfAvailableTickets-quantity;
+    public void updateAvailableTickets(int quantity) {
+        this.numberOfAvailableTickets = this.numberOfAvailableTickets - quantity;
     }
 
     @Override

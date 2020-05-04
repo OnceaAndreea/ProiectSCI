@@ -1,0 +1,100 @@
+.order-details {
+   margin: 0 auto;
+   width: 60%;
+   margin-top: 150px;
+   color: #696060;
+   font-size: 16px;
+   background: #f7f7f7;
+   padding: 25px;
+}
+
+.your-order-title {
+  font-weight: bold;
+  font-size: 21px;
+  text-align: center;
+  margin-bottom: 30px;
+  width: 60%;
+  color: #225450;
+}
+
+.date-time-details{
+  font-weight: bold;
+  margin-bottom: 19px;
+}
+
+.departure-arrival-details {
+  padding-left: 25px;
+  margin-bottom: 19px;
+}
+
+.price-distance-details {
+  padding-bottom: 18px;
+}
+
+.icon-detail .icon-text {
+  visibility: hidden;
+  width: 75px;
+  text-align: center;
+  background-color: #e2e0e0;
+  color: #fff;
+  border-radius: 10px;
+  padding: 5px 0;
+  position: absolute;
+  z-index: 1;
+  margin-top: 23px;
+  margin-left: -46px;
+}
+
+.icon-detail:hover .icon-text {
+  visibility: visible;
+}
+
+.font-bold {
+   font-weight: bold;
+}
+
+.divider {
+  border-top: 1px solid #5a8680;
+  margin-top: 30px;
+}
+
+.margin-final {
+   margin-left: 92px;
+}
+
+.margin-quantity-details {
+   margin-top: 38px;
+}
+
+input {
+  text-align: center;
+}
+
+.quantity {
+  width: 9%;
+  border-radius: 4px;
+}
+
+input[type=submit] {
+  background-color: #61ce66;;
+  border: none;
+  color: white;
+  padding: 6px 95px;
+  text-decoration: none;
+  cursor: pointer;
+  font-size: 15px;
+  border-radius: 10px;
+  margin-top: 38px;
+}
+
+.advert-message {
+  color: #c32c2c;
+  font-size: 15px;
+  margin-left: 150px;
+
+}
+
+.margin-right-icon {
+  margin-right: 6px;
+}
+

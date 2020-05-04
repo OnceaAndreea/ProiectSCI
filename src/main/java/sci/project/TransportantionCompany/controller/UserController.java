@@ -8,11 +8,13 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import sci.project.TransportantionCompany.model.BusTicket;
 import sci.project.TransportantionCompany.model.User;
 import sci.project.TransportantionCompany.service.user.UserService;
 
 import javax.validation.Valid;
 import java.security.Principal;
+import java.util.List;
 
 @Controller
 public class UserController {
@@ -53,6 +55,16 @@ public class UserController {
         User user = userService.findByEmail(principal.getName());
         model.addAttribute("currentUser", user);
         return "my-profile";
+    }
+
+    @GetMapping("/mytickets")
+    public String showUserTicketsForm(Model model, Principal principal) {
+
+        User user = userService.findByEmail(principal.getName());
+        List<BusTicket> myTickets = user.getTickets();
+
+        model.addAttribute("tickets", myTickets);
+        return "my-tickets";
     }
 
 }

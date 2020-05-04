@@ -2,8 +2,8 @@ body {
   font: 14px/1.6 'Roboto Condensed', 'Arial', sans-serif;
 }
 
-.route-container{
-   margin-top: 64px;
+.route-container {
+   margin-top: 150px;
 }
 
 .title-container {
@@ -26,7 +26,8 @@ body {
 .content-container {
    width: 66%;
    margin: 0 auto;
-
+   background: #f7f7f7;
+   padding: 15px;
 }
 
 .header-content {
@@ -83,7 +84,7 @@ body {
 }
 
 .distance-width {
-  width: 29%;
+  width: 32%;
 }
 
 .price-width {

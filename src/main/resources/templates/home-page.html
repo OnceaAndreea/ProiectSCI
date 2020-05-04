@@ -8,7 +8,8 @@
     <link href="https://www.w3schools.com/w3css/3/w3.css" rel="stylesheet">
     <link crossorigin="anonymous" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.css" rel="stylesheet"
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.css"
+          rel="stylesheet"
           type="text/css">
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css" rel="stylesheet">
 
@@ -20,18 +21,17 @@
 
 <body>
 
-<div class="road-background ">
-
-    <div class="header-back" th:fragment="navigation">
+<div class="road-background">
+    <div class="navigation-container" th:fragment="navigation">
         <!-- Logo -->
-        <div class="w3-container w3-center w3-content" style="max-width:600px">
-            <img alt="memorynotfound logo" class="logo-stil" th:src="@{/img/logo3.png}"/>
+        <div class="logo-container">
+            <img alt="memorynotfound logo" class="logo-style" th:src="@{/img/logo3.png}"/>
         </div>
 
         <!-- Navigation bar-->
         <div class="navibar">
 
-            <div class="navigation-for-all">
+            <div>
                 <a th:href="@{/}">Acasa</a>
                 <a href="#news">Curse</a>
                 <div class="drpdown">
@@ -44,17 +44,15 @@
                         <a href="#">Cariere</a>
                     </div>
                 </div>
-            </div>
-
-            <div class="navigation-for-registered">
                 <a sec:authorize="isAnonymous()" th:href="@{login}">Autentificare</a>
                 <a sec:authorize="isAuthenticated()" th:href="@{/profile}">Profilul meu</a>
             </div>
 
         </div>
     </div>
+    <div>.</div>
 
-    <!-- Search section -->
+    <!-- Search section-->
     <div class="search-container">
         <div id="search-border">
             <form action="#" method="get" th:action="@{/search}" th:object="${busRoute}"
@@ -90,12 +88,10 @@
             </form>
         </div>
     </div>
-
-    <div>
-        hei
-    </div>
+    <div>.</div>
 
 </div>
+
 <!-- 3 Sections Rute/Curse/Bagaje -->
 <div class="w3-row-padding w3-center w3-transparent">
     <article class="w3-third">
@@ -121,35 +117,6 @@ $('.datepicker').datepicker({
     startDate: new Date()
 });
 
-</script>
-
-<script>
-var slideIndex = 1;
-showSlides(slideIndex);
-
-function plusSlides(n) {
-  showSlides(slideIndex += n);
-}
-
-function currentSlide(n) {
-  showSlides(slideIndex = n);
-}
-
-function showSlides(n) {
-  var i;
-  var slides = document.getElementsByClassName("mySlides");
-  var dots = document.getElementsByClassName("dot");
-  if (n > slides.length) {slideIndex = 1}
-  if (n < 1) {slideIndex = slides.length}
-  for (i = 0; i < slides.length; i++) {
-      slides[i].style.display = "none";
-  }
-  for (i = 0; i < dots.length; i++) {
-      dots[i].className = dots[i].className.replace(" active", "");
-  }
-  slides[slideIndex-1].style.display = "block";
-  dots[slideIndex-1].className += " active";
-}
 
 </script>
 
