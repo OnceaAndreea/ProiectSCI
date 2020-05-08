@@ -1,5 +1,5 @@
 .add-form-container {
-  margin-top: 87px;
+  margin-top: 58px;
   margin-left: 199px;
   width: 63%;
   padding: 10px 50px;
@@ -68,7 +68,7 @@ margin-right: 84px;
 .line-separator {
    border-top: 1px solid black;
    margin-top: 15px;
-   margin-bottom: 44px;
+   margin-bottom: 34px;
  }
 
 .message-for-error {
@@ -85,7 +85,7 @@ input[type=submit] {
   cursor: pointer;
   font-size: 15px;
   border-radius: 8px;
-  margin-top: 38px;
+  margin-top: 28px;
   margin-left: 35px;
 }
 
@@ -101,7 +101,7 @@ ul {
 }
 
 .admin-dashboard-menu-item {
-   line-height: 176px;
+   line-height: 150px;
    vertical-align: middle;
 }
 
