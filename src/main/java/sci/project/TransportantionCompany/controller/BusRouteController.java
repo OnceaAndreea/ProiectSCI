@@ -37,33 +37,45 @@ public class BusRouteController {
     @PostMapping(value = "/addRoute", params = "addNewBusRoute")
     public String addRoute(@ModelAttribute("busRoute") @Valid BusRoute busRoute, BindingResult result, Model model) {
 
+        if (busRoute.getDeparture().isEmpty()) {
+            result.rejectValue("departure", "error", "*Required");
+        }
+
+        if (busRoute.getArrival().isEmpty()) {
+            result.rejectValue("arrival", "error", "*Required");
+        }
+
         if (busRoute.getDepartureStation().isEmpty()) {
-            result.rejectValue("departureStation", "error", "Camp necompletat! Introduceti statia de plecare");
+            result.rejectValue("departureStation", "error", "*Required");
         }
 
         if (busRoute.getArrivalStation().isEmpty()) {
-            result.rejectValue("arrivalStation", "error", "Camp necompletat! Introduceti statia de sosire");
+            result.rejectValue("arrivalStation", "error", "*Required");
         }
 
         if (busRoute.getDepartureTime().isEmpty()) {
-            result.rejectValue("departureTime", "error", "Camp necompletat! Introduceti ora de plecare");
+            result.rejectValue("departureTime", "error", "*Required");
         }
 
         if (busRoute.getArrivalTime().isEmpty()) {
-            result.rejectValue("arrivalTime", "error", "Camp necompletat! Introduceti ora de sosire");
+            result.rejectValue("arrivalTime", "error", "*Required");
+        }
+
+        if (busRoute.getDepartureDate().isEmpty()) {
+            result.rejectValue("departureDate", "error", "*Required");
         }
 
         if (busRoute.getDistance()==0) {
-            result.rejectValue("distance", "error", "Camp necompletat! Introduceti distanta cursei");
+            result.rejectValue("distance", "error", "*Required");
         }
 
         if (busRoute.getPrice()==0) {
-            result.rejectValue("price", "error", "Camp necompletat! Introduceti pretul pentru adulti al cursei");
+            result.rejectValue("price", "error", "*Required");
         }
 
 
         if (result.hasErrors()) {
-            return "add-route";
+            return "admin-route";
         }
 
         busRouteService.addBusRoute(busRoute);

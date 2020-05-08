@@ -15,12 +15,9 @@ public class Bus {
 
     @Id
     @Column(name = "id", unique = true, columnDefinition = "VARCHAR(64)", nullable = false)
-    @NotEmpty(message="Camp necompletat! Introduceti numarul de inmatriculare al autocarului")
     private String id;
 
     @Column(name = "number_of_seats", nullable = false)
-    @NotNull(message="Camp necompletat! Introduceti numarul de locuri")
-    @Range(min = 48,max=50,message="Autocarele TransDor au minim 48 de locuri si maxim 50!")
     private Integer numberOfSeats;
 
     @OneToMany

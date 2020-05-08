@@ -1,0 +1,156 @@
+.add-form-container {
+  margin-top: 87px;
+  margin-left: 199px;
+  width: 63%;
+  padding: 10px 50px;
+  padding-bottom: 48px;
+
+}
+
+.input-field {
+  border-radius: 4px;
+}
+
+.margin-input-group {
+  margin-bottom: 12px;
+}
+
+.margin-departure {
+  margin-right: 70px;
+}
+
+.margin-departure-station {
+  margin-right: 20px;
+}
+
+.margin-departure-hour {
+  margin-right: 34px;
+}
+
+.margin-arrival {
+  margin-right: 90px;
+}
+
+.margin-arrival-station {
+  margin-right: 39px;
+}
+.margin-arrival-hour {
+  margin-right: 53px;
+}
+
+.margin-date {
+  margin-right: 101px;
+}
+
+.margin-distance {
+  margin-right: 71px;
+}
+
+.margin-price {
+  margin-right: 101px;
+}
+
+.margin-bus {
+margin-right: 84px;
+}
+
+.border-radius {
+  border-radius: 4px;
+  height: 31px;
+  padding: 4px;
+}
+
+.dropdown-menu {
+  top: 222px!important;
+  font-size: 13px!important;
+}
+
+.line-separator {
+   border-top: 1px solid black;
+   margin-top: 15px;
+   margin-bottom: 44px;
+ }
+
+.message-for-error {
+  color: #ad1313;
+  font-style: italic;
+}
+
+input[type=submit] {
+  background-color: #252020;
+  border: none;
+  color: white;
+  padding: 6px 37px;
+  text-decoration: none;
+  cursor: pointer;
+  font-size: 15px;
+  border-radius: 8px;
+  margin-top: 38px;
+  margin-left: 35px;
+}
+
+.admin-dashboard-menu {
+    position: fixed;
+    top: 55px;
+    padding: 0 17px;
+    background: black;
+}
+
+ul {
+   list-style :none;
+}
+
+.admin-dashboard-menu-item {
+   line-height: 176px;
+   vertical-align: middle;
+}
+
+.admin-dashboard-menu-item a {
+   position: relative;
+   font-size: 15px;
+   font-weight: bold;
+   color: #f5f5f5;
+   text-decoration: none;
+   display: inline-block;
+}
+
+.admin-dashboard-menu-item a:hover {
+   color: #767676;
+   text-decoration: none;
+}
+
+#admin-border {
+   border: 2px solid white;
+   padding: 15px;
+   border-radius: 10px;
+   background: black;
+   text-align: center;
+   color: white;
+   font-weight: bold;
+   margin-bottom: 53px;
+}
+
+.options-container {
+   margin-top: 109px;
+   margin-left: 258px;
+   width: 60%;
+   padding-bottom: 72px;
+   background: #f1eded;
+}
+
+.options-link {
+  color: black;
+  text-decoration: none;
+}
+
+.options {
+  margin-left: 129px;
+}
+
+.option {
+  margin-bottom: 50px;
+}
+
+a hover {
+ color:red;
+}

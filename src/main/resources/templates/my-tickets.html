@@ -7,6 +7,8 @@
     <link rel="stylesheet" th:href="@{/css/myprofile.css}">
     <link rel="stylesheet" th:href="@{/css/tickets.css}">
     <link href="https://www.w3schools.com/w3css/3/w3.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
     <link crossorigin="anonymous" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" rel="stylesheet">
 </head>
@@ -37,24 +39,48 @@
     <div class="line-separator"></div>
     <div class="user-dashboard-content">
         <div class="user-dashboard-title">My tickets</div>
-        <div  class="scroll-down">
-        <div  th:each="ticket : ${tickets}">
-            <div>
 
-                    <a>Date</a>
-                    <a th:text="${ticket.getDepartureDate()}"></a>
-                </div>
+        <div class="tickets-container" th:switch="${tickets.size()}">
 
-                <div>
-                    <a>Departure/Arrival</a>
-                    <a th:text="${ticket.getDepartureTime()}"></a>
-                    <a>-</a>
-                    <a th:text="${ticket.getDeparture()}"></a>
-                    <a>,</a>
-                    <a th:text="${ticket.getDepartureStation()}"></a>
+            <div class="case-empty-message " th:case="'0'">You don't have tickets yet!</div>
+
+            <div th:case="*">
+
+                <div th:each="ticket : ${tickets}">
+                    <div class="ticket-container">
+                        <div class="margin-items">
+                            <a class="font-weight-bold">Date</a>
+                            <a th:text="${ticket.getDepartureDate()}"></a>
+                        </div>
+
+                        <div class="margin-items">
+                            <a class="font-weight-bold">Departure/Arrival</a>
+                            <a th:text="${ticket.getDepartureTime()}"></a>
+                            <a>-</a>
+                            <a th:text="${ticket.getDeparture()}"></a>
+                            <a>,</a>
+                            <a th:text="${ticket.getDepartureStation()}"></a>
+                            <a>→</a>
+                            <a th:text="${ticket.getArrivalTime()}"></a>
+                            <a>-</a>
+                            <a th:text="${ticket.getArrival()}"></a>
+                            <a>,</a>
+                            <a th:text="${ticket.getArrivalStation()}"></a>
+                        </div>
+                        <div class="margin-items">
+                            <a class="font-weight-bold">Number of tickets</a>
+                            <a th:text="${ticket.getDetails().getQuantity()}"></a>
+                        </div>
+                        <div class="total-container">
+                            <a class="font-weight-bold" id="total-item-border">Total</a>
+                            <a class="total-item" th:text="${ticket.getDetails().getTotal()}"></a>
+                            <i class="price-width fas fa-euro-sign"></i>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
+    </div>
     </div>
 
 </section>

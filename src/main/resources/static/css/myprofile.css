@@ -2,6 +2,7 @@
     margin-bottom: 24px;
     border-bottom: 0px solid #c1c1c1;
     width: 15%;
+    position: fixed;
 }
 
 .user-dashboard-menu-items {
@@ -66,18 +67,20 @@ ul {
 }
 
 .profile-container {
-   margin-top: 62px;
+   margin-top: 103px;
    margin-left: 35px;
    display: flex;
 }
 
 .line-separator {
    border-left: 1px solid #5a8680;
-   height: 600px;
+   height: 667px;
+   position: fixed;
+   margin-left: 200px;
 }
 
 .user-dashboard-content {
-   margin-left: 40px;
+   margin-left: 240px;
 }
 
 .user-dashboard-title {

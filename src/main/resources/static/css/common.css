@@ -65,16 +65,19 @@ img {vertical-align: middle;}
 }
 
 .logo-style {
-  width: 7%;
-  margin-top: 3px;
-  margin-bottom: 3px;
+ margin-top: 5px;
+ margin-bottom: 2px;
+ height: 37px;
+ float: left;
+ margin-left: 100px;
+ margin-right: 25px;
 }
 
-.station-wrapper{
-display: inline-block;
+.station-wrapper {
+  display: inline-block;
 }
 
-.display-arrow{
+.display-arrow {
 padding: 0 5px;
 margin-bottom: 73px;
 margin-top: 115px;
@@ -89,7 +92,6 @@ font-size: 24px
 }
 
 .navigation-container {
-   background-image: url('back1.jpeg');
    top: 0;
    width: 100%;
    position: fixed;
@@ -97,7 +99,7 @@ font-size: 24px
 
 .navibar {
   overflow: hidden;
-  background-color: #32a98d;
+  background-color: #36d40e;
 }
 
 .navibar a {
@@ -105,7 +107,7 @@ font-size: 24px
   font-size: 16px;
   color: white;
   text-align: center;
-  padding: 12px 45px;
+  padding: 15px 45px;
   text-decoration: none;
 }
 
@@ -119,7 +121,7 @@ font-size: 24px
   border: none;
   outline: none;
   color: white;
-  padding: 12px 45px;
+  padding: 15px 45px;
   background-color: inherit;
   font-family: inherit;
   margin: 0;
@@ -132,31 +134,6 @@ font-size: 24px
   text-decoration: none;
 }
 
-.drpdown-content {
-  display: none;
-  position: absolute;
-  background-color: #f9f9f9;
-  min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  z-index: 1;
-}
-
-.drpdown-content a {
-  float: none;
-  color: black;
-  padding: 12px 16px;
-  text-decoration: none;
-  display: block;
-  text-align: left;
-}
-
-.drpdown-content a:hover {
-  background-color: #ddd;
-}
-
-.drpdown:hover .drpdown-content {
-  display: block;
-}
 
 .group-for-date {
   display: inline-table;
@@ -165,4 +142,8 @@ font-size: 24px
 
 .logo-container {
   text-align: center;
+}
+
+.navigation-item {
+  float: right;
 }

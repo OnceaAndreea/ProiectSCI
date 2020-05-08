@@ -1,19 +1,48 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.thymeleaf.org/extras/spring-security" >
+<html xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      xmlns:th="http://www.thymeleaf.org">
 
 <head>
+    <title>Administration</title>
+    <link rel="stylesheet" th:href="@{/css/common.css}">
+    <link rel="stylesheet" th:href="@{/css/admin.css}">
 
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
 </head>
 
 <body>
-<div>
-    <a th:href="@{/addRoute}">Adauga o noua ruta</a>
-    <a th:href="@{/editOrDelete}">Sterge/modifica rute</a>
-    <a th:href="@{/addBus}">Adauga un nou autocar</a>
-    <a th:href="@{/editOrDeleteBus}">Sterge/modifica detalii autocare</a>
-</div>
+<div th:insert="home-page.html :: navigation"></div>
 
+<div class="options-container">
+    <div id="admin-border">
+        <a> Welcome to admin page</a>
+        <i class="fas fa-tools"></i>
+    </div>
+    <div class="options">
+        <div class="option">
+            <i class="far fa-hand-point-right"></i>
+            <a class="options-link" th:href="@{/addRoute}">Add new routes</a>
+        </div>
+
+        <div class="option">
+            <i class="far fa-hand-point-right"></i>
+            <a class="options-link" th:href="@{/editOrDelete}">Edit/delete routes</a>
+        </div>
+
+        <div class="option">
+            <i class="far fa-hand-point-right"></i>
+            <a class="options-link" th:href="@{/addBus}">Add new buses</a>
+        </div>
+
+        <div class="option">
+            <i class="far fa-hand-point-right"></i>
+            <a class="options-link" th:href="@{/editOrDeleteBus}">Edit/delete buses</a>
+        </div>
+
+    </div>
+    <div class="line-separator"></div>
+</div>
 </body>
 
 </html>
