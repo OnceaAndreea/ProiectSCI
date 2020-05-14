@@ -65,12 +65,12 @@ img {vertical-align: middle;}
 }
 
 .logo-style {
- margin-top: 5px;
- margin-bottom: 2px;
- height: 37px;
- float: left;
- margin-left: 100px;
- margin-right: 25px;
+  margin-top: 5px;
+  margin-bottom: 2px;
+  height: 37px;
+  float: left;
+  margin-left: 100px;
+  margin-right: 25px;
 }
 
 .station-wrapper {
@@ -78,13 +78,13 @@ img {vertical-align: middle;}
 }
 
 .display-arrow {
-padding: 0 5px;
-margin-bottom: 73px;
-margin-top: 115px;
-font-size: 24px
+  padding: 0 5px;
+  margin-bottom: 73px;
+  margin-top: 115px;
+  font-size: 24px
 }
 
-.table-allign{
+.table-allign {
   border-radius: 5px;
   width: 50%;
   margin: 0px auto;

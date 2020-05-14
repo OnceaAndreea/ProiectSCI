@@ -69,13 +69,13 @@ public class BusRouteController {
             result.rejectValue("distance", "error", "*Required");
         }
 
-        if (busRoute.getPrice()==0) {
+        if (busRoute.getPrice()==0.0) {
             result.rejectValue("price", "error", "*Required");
         }
 
 
         if (result.hasErrors()) {
-            return "admin-route";
+            return "add-route";
         }
 
         busRouteService.addBusRoute(busRoute);
@@ -99,6 +99,42 @@ public class BusRouteController {
     @PostMapping("/update/{id}")
     public String updateRoute(@PathVariable("id") int id, @Valid BusRoute busRoute,
                               BindingResult result, Model model) {
+
+        if (busRoute.getDeparture().isEmpty()) {
+            result.rejectValue("departure", "error", "*Required");
+        }
+
+        if (busRoute.getArrival().isEmpty()) {
+            result.rejectValue("arrival", "error", "*Required");
+        }
+
+        if (busRoute.getDepartureStation().isEmpty()) {
+            result.rejectValue("departureStation", "error", "*Required");
+        }
+
+        if (busRoute.getArrivalStation().isEmpty()) {
+            result.rejectValue("arrivalStation", "error", "*Required");
+        }
+
+        if (busRoute.getDepartureTime().isEmpty()) {
+            result.rejectValue("departureTime", "error", "*Required");
+        }
+
+        if (busRoute.getArrivalTime().isEmpty()) {
+            result.rejectValue("arrivalTime", "error", "*Required");
+        }
+
+        if (busRoute.getDepartureDate().isEmpty()) {
+            result.rejectValue("departureDate", "error", "*Required");
+        }
+
+        if (busRoute.getDistance()==0) {
+            result.rejectValue("distance", "error", "*Required");
+        }
+
+        if (busRoute.getPrice()==0.0) {
+            result.rejectValue("price", "error", "*Required");
+        }
         if (result.hasErrors()) {
             busRoute.setId(id);
             return "update-route";

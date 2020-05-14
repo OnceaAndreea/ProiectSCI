@@ -17,6 +17,12 @@ public class MainController {
         return "home-page";
     }
 
+    @GetMapping("/company")
+    public String showCompanyPageForm() {
+        return "company";
+    }
+
+
 }
 
 

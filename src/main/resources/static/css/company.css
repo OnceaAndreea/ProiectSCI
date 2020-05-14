@@ -1,0 +1,23 @@
+.picture-header {
+   background-image: url(bus.jpg);
+   height: 145px;
+   margin: 0 210px;
+   margin-top: 109px;
+   margin-bottom: 52px;
+}
+
+.subtitle {
+  margin-left: 213px;
+  margin-bottom: 34px;
+  margin-right: 213px;
+}
+
+.separator {
+  border-top: 1px solid black;
+  margin-bottom: 12px;
+}
+
+.font {
+  font-size: 18px;
+  font-weight: bold;
+}

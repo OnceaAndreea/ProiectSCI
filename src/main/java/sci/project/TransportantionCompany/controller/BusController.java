@@ -33,9 +33,23 @@ public class BusController {
     @PostMapping(value = "/addBus", params = "addNewBus")
     public String addRoute(@ModelAttribute("bus") @Valid Bus bus, BindingResult result, Model model) {
 
-        if(busService.findBusById(bus.getId())!=null){
-            result.rejectValue("id", "error", "Autocarul cu acest numar de inmatriculare a fost deja adaugat!");
+        if (busService.findBusById(bus.getId()) != null) {
+            result.rejectValue("id", "error", "The bus with this registration number has already been added!");
         }
+
+        if (bus.getId().isEmpty()) {
+            result.rejectValue("id", "error", "*Required");
+        }
+
+        if (bus.getNumberOfSeats()== 0) {
+            result.rejectValue("numberOfSeats", "error", "*Required");
+        }
+
+        if (bus.getNumberOfSeats() < 48 && bus.getNumberOfSeats()!=0)
+            result.rejectValue("numberOfSeats", "error", "TRANSDOR buses have a minimum of 48 seats");
+
+        if (bus.getNumberOfSeats() > 52)
+            result.rejectValue("numberOfSeats", "error", "TRANSDOR buses have a maximum of 52 seats");
 
         if (result.hasErrors()) {
             return "add-bus";
@@ -64,7 +78,22 @@ public class BusController {
 
     @PostMapping("/updateBus/{id}")
     public String updateBus(@PathVariable("id") String id, @Valid Bus bus,
-                              BindingResult result, Model model) {
+                            BindingResult result, Model model) {
+
+        if (bus.getId().isEmpty()) {
+            result.rejectValue("id", "error", "*Required");
+        }
+
+        if (bus.getNumberOfSeats()== 0) {
+            result.rejectValue("numberOfSeats", "error", "*Required");
+        }
+
+        if (bus.getNumberOfSeats() < 48 && bus.getNumberOfSeats()!=0)
+            result.rejectValue("numberOfSeats", "error", "TRANSDOR buses have a minimum of 48 seats");
+
+        if (bus.getNumberOfSeats() > 52)
+            result.rejectValue("numberOfSeats", "error", "TRANSDOR buses have a maximum of 52 seats");
+
         if (result.hasErrors()) {
             bus.setId(id);
             return "update-bus";
@@ -77,13 +106,11 @@ public class BusController {
 
     @GetMapping("/deleteBus/{id}")
     public String deleteRoute(@PathVariable("id") String id, Model model) {
-        Bus bus= busService.findBusById(id);
+        Bus bus = busService.findBusById(id);
         busService.deleteBusById(id);
         model.addAttribute("buses", busService.getAllBuses());
         return "edit-delete-bus";
     }
-
-
 
 
 }

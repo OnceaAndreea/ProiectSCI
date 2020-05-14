@@ -32,6 +32,11 @@ public class UserController {
         return "registration";
     }
 
+    @GetMapping("/administration")
+    public String showAdminPage() {
+        return "admin-page";
+    }
+
     @PostMapping("/registration")
     public String registerUserAccount(@ModelAttribute("user") @Valid UserRegistrationDto userDto,
                                       BindingResult result) {
@@ -66,5 +71,6 @@ public class UserController {
         model.addAttribute("tickets", myTickets);
         return "my-tickets";
     }
+
 
 }

@@ -1,29 +1,55 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
+    <title>Company's buses</title>
+    <link rel="stylesheet" th:href="@{/css/admin.css}">
+    <link rel="stylesheet" th:href="@{/css/common.css}">
 </head>
 <body>
-<div th:switch="${buses.size()}" xmlns:th="http://www.w3.org/1999/xhtml">
-    <h2 th:case="'0'">Nu exista autocare disponibile</h2>
+<div th:insert="home-page.html :: navigation"></div>
+
+<div class="admin-dashboard-menu">
+
+    <div class="admin-dashboard-menu-item">
+        <a class="admin-dashboard-menu-item-user" th:href="@{/addRoute}"> Add new routes</a>
+    </div>
+    <div class="admin-dashboard-menu-item">
+        <a class="admin-dashboard-menu-item-cart" th:href="@{/editOrDelete}">Edit/delete routes</a>
+    </div>
+    <div class="admin-dashboard-menu-item">
+        <a class="admin-dashboard-menu-item-cart" th:href="@{/addBus}">Add new buses</a>
+    </div>
+    <div class="admin-dashboard-menu-item">
+        <a class="admin-dashboard-menu-item-cart" th:href="@{/editOrDeleteBus}">Edit/delete buses</a>
+    </div>
+
+</div>
+
+<div class="all-buses-container" th:switch="${buses.size()}">
+
+    <h2 class="case-empty" th:case="'0'">No available buses!</h2>
     <div th:case="*">
-        <h2>Toate autocarele companiei</h2>
+        <h4 class="font-weight-bold">Transdor's buses</h4>
+        <div class="line-separator-bus-up"></div>
         <table>
             <thead>
             <tr>
-                <th>Numarul de inregistrare</th>
-                <th>Numar de locuri</th>
+                <th>Bus Id</th>
+                <th>Number of seats</th>
             </tr>
             </thead>
             <tbody>
             <tr th:each="bus:${buses}">
                 <td th:text="${bus.getId()}"></td>
                 <td th:text="${bus.getNumberOfSeats()}"></td>
-                <td><a th:href="@{/editBus/{id}(id=${bus.id})}">Edit</a></td>
-                <td><a th:href="@{/deleteBus/{id}(id=${bus.id})}">Delete</a></td>
+                <td ><a id="edit-border" th:href="@{/editBus/{id}(id=${bus.id})}">Edit</a></td>
+                <td><a id="delete-border" th:href="@{/deleteBus/{id}(id=${bus.id})}">Delete</a></td>
             </tr>
             </tbody>
         </table>
+        <div class="buses-sep"></div>
     </div>
+
 </div>
 </body>

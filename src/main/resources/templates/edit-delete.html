@@ -1,49 +1,72 @@
 <!DOCTYPE html >
-<html lang="en"
-      xmlns:th="http://www.w3.org/1999/xhtml">
+<html xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
+    <title>Company's routes</title>
+    <link rel="stylesheet" th:href="@{/css/admin.css}">
+    <link rel="stylesheet" th:href="@{/css/common.css}">
 </head>
 <body>
+<div th:insert="home-page.html :: navigation"></div>
 
-<div th:switch="${busRoutes.size()}" >
+<div class="admin-dashboard-menu">
+    <div class="admin-dashboard-menu-item">
+        <a class="admin-dashboard-menu-item-user" th:href="@{/addRoute}"> Add new routes</a>
+    </div>
+    <div class="admin-dashboard-menu-item">
+        <a class="admin-dashboard-menu-item-cart" th:href="@{/editOrDelete}">Edit/delete routes</a>
+    </div>
+    <div class="admin-dashboard-menu-item">
+        <a class="admin-dashboard-menu-item-cart" th:href="@{/addBus}">Add new buses</a>
+    </div>
+    <div class="admin-dashboard-menu-item">
+        <a class="admin-dashboard-menu-item-cart" th:href="@{/editOrDeleteBus}">Edit/delete buses</a>
+    </div>
+</div>
 
-    <div th:case="'0'"> Nu exista nicio ruta disponibila!</div>
+<div class="routes-container" th:switch="${busRoutes.size()}">
+
+    <div class="case-empty" th:case="'0'"> No available routes!</div>
 
     <div th:case="*">
-        <h2>Toate rutele companiei</h2>
+        <div class="title-container">
+        <h3 class="font-weight-bold">Transdor routes</h3>
+        <div class="line-separator-route"></div>
+        </div>
         <table>
             <thead>
             <tr>
-                <th>Data cursei</th>
-                <th>Orasul de plecare</th>
-                <th>Statia de plecare</th>
-                <th>Ora de plecare</th>
-                <th>Orasul de sosire</th>
-                <th>Statia de sosire</th>
-                <th>Ora de sosire</th>
-                <th>Distanta</th>
-                <th>Pret</th>
-                <th>Autocarul care executa cursa</th>
+                <th class="table-padding">Date</th>
+                <th class="table-padding">Departure</th>
+                <th class="table-padding">Departure station</th>
+                <th class="table-padding">Departure time</th>
+                <th class="table-padding">Arrival</th>
+                <th class="table-padding">Arrival station</th>
+                <th class="table-padding">Arrival time</th>
+                <th class="table-padding">Distance</th>
+                <th class="table-padding">Price</th>
+                <th class="table-padding">Bus ID</th>
             </tr>
             </thead>
             <tbody>
             <tr th:each="busRoute : ${busRoutes}">
-                <td th:text="${busRoute.getDepartureDate()}"></td>
-                <td th:text="${busRoute.getDeparture()}"></td>
-                <td th:text="${busRoute.getDepartureStation()}"></td>
-                <td th:text="${busRoute.getDepartureTime()}"></td>
-                <td th:text="${busRoute.getArrival()}"></td>
-                <td th:text="${busRoute.getArrivalStation()}"></td>
-                <td th:text="${busRoute.getArrivalTime()}"></td>
-                <td th:text="${busRoute.getDistance()}"></td>
-                <td th:text="${busRoute.getPrice()}"></td>
-                <td th:text="${busRoute.getBus().getId()}"></td>
-                <td><a th:href="@{/edit/{id}(id=${busRoute.id})}">Edit</a></td>
-                <td><a th:href="@{/delete/{id}(id=${busRoute.id})}">Delete</a></td>
+                <td class="table-padding" th:text="${busRoute.getDepartureDate()}"></td>
+                <td class="table-padding" th:text="${busRoute.getDeparture()}"></td>
+                <td class="table-padding" th:text="${busRoute.getDepartureStation()}"></td>
+                <td class="table-padding" th:text="${busRoute.getDepartureTime()}"></td>
+                <td class="table-padding" th:text="${busRoute.getArrival()}"></td>
+                <td class="table-padding" th:text="${busRoute.getArrivalStation()}"></td>
+                <td class="table-padding" th:text="${busRoute.getArrivalTime()}"></td>
+                <td class="table-padding" th:text="${busRoute.getDistance()}"></td>
+                <td class="table-padding" th:text="${busRoute.getPrice()}"></td>
+                <td class="table-padding" th:text="${busRoute.getBus().getId()}"></td>
+                <td class="edit-delete"><a id="edit-border-route" th:href="@{/edit/{id}(id=${busRoute.id})}">Edit</a></td>
+                <td class="edit-delete"><a id="delete-border-route" th:href="@{/delete/{id}(id=${busRoute.id})}">Delete</a></td>
             </tr>
             </tbody>
         </table>
+        <div class="line-separator-route routes-sep"></div>
     </div>
+
 </div>
 </body>

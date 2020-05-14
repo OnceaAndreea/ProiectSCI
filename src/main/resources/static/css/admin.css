@@ -1,7 +1,6 @@
 .add-form-container {
   margin-top: 58px;
   margin-left: 199px;
-  width: 63%;
   padding: 10px 50px;
   padding-bottom: 48px;
 
@@ -47,11 +46,19 @@
 }
 
 .margin-price {
-  margin-right: 101px;
+  margin-right: 95px;
 }
 
 .margin-bus {
-margin-right: 84px;
+  margin-right: 84px;
+}
+
+.margin-bus-id {
+  margin-right: 75px;
+}
+
+.margin-seats {
+  margin-right: 10px;
 }
 
 .border-radius {
@@ -61,7 +68,7 @@ margin-right: 84px;
 }
 
 .dropdown-menu {
-  top: 222px!important;
+  top: 145px!important;
   font-size: 13px!important;
 }
 
@@ -70,6 +77,17 @@ margin-right: 84px;
    margin-top: 15px;
    margin-bottom: 34px;
  }
+
+.line-separator-bus-up {
+   border-top: 1px solid black;
+   margin-top: 15px;
+   margin-bottom: 30px;
+}
+
+.line-separator-bus-down {
+   border-top: 1px solid black;
+   margin-top: 270px;
+}
 
 .message-for-error {
   color: #ad1313;
@@ -151,6 +169,145 @@ ul {
   margin-bottom: 50px;
 }
 
-a hover {
- color:red;
+.margin-input-group-bus {
+  margin-bottom: 18px;
+}
+
+.notify {
+  padding: 10px;
+  margin-bottom: 18px;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  text-align: center;
+  width: 80%;
+  border-color: #9a8787;
+  color: #297928;
+  background-color: #d6ffc8;
+}
+
+td, th {
+  padding: 11px 39px;
+}
+
+tbody {
+  font-size: 15px;
+}
+
+.all-buses-container {
+  margin-top: 48px;
+  margin-left: 181px;
+  padding: 10px 50px;
+  padding-bottom: 48px;
+
+}
+
+#edit-border {
+   border: 2px solid black;
+   padding: 7px 30px;
+   border-radius: 10px;
+   background: black;
+   width: 13%;
+   margin: auto;
+   text-align: center;
+   color: white;
+   text-decoration: none;
+}
+
+#edit-border-route {
+   border: 2px solid black;
+   padding: 5px 28px;
+   border-radius: 10px;
+   background: black;
+   width: 13%;
+   margin: auto;
+   text-align: center;
+   color: white;
+   text-decoration: none;
+}
+
+#delete-border {
+   border: 2px solid green;
+   padding: 7px 20px;
+   border-radius: 10px;
+   background: green;
+   width: 13%;
+   margin: auto;
+   text-align: center;
+   color: white;
+   text-decoration: none;
+}
+
+#delete-border-route {
+   border: 2px solid green;
+   padding: 5px 18px;
+   border-radius: 10px;
+   background: green;
+   width: 13%;
+   margin: auto;
+   text-align: center;
+   color: white;
+   text-decoration: none;
+}
+
+.table-padding {
+   padding: 11px 13px;
+   font-size: 14px;
+}
+
+.edit-delete {
+   padding: 11px 3px;
+   font-size: 14px;
+}
+
+.routes-container {
+  margin-left: 165px;
+  margin-top: 82px;
+}
+
+.line-separator-route {
+  border-top: 1px solid black;
+  margin-bottom: 16px;
+}
+
+.title-container {
+  padding: 0 11px;
+}
+
+.case-empty {
+  margin-top: 151px;
+  margin-left: 283px;
+  padding: 10px;
+  margin-bottom: 18px;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  text-align: center;
+  border-color: #9a8787;
+  color: #297928;
+  background-color: #d6ffc8;
+  width: 60%;
+}
+
+#cancel-border {
+  border: 2px solid #b6c735;
+  padding: 6px 33px;
+  border-radius: 8px;
+  background: #b6c735;
+  text-align: center;
+  color: white;
+  text-decoration: none;
+  font-size: 15px;
+  margin-left: 58px;
+}
+
+.buttons {
+  margin-top: 36px;
+}
+
+.routes-sep {
+  margin: 16px 11px;
+}
+
+.buses-sep {
+ border-top: 1px solid black;
+ margin-top: 30px;
 }

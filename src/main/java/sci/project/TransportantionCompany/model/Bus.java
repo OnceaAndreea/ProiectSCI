@@ -18,7 +18,7 @@ public class Bus {
     private String id;
 
     @Column(name = "number_of_seats", nullable = false)
-    private Integer numberOfSeats;
+    private int numberOfSeats;
 
     @OneToMany
             (
@@ -39,11 +39,11 @@ public class Bus {
         this.id = id;
     }
 
-    public Integer getNumberOfSeats() {
+    public int getNumberOfSeats() {
         return numberOfSeats;
     }
 
-    public void setNumberOfSeats(Integer numberOfSeats) {
+    public void setNumberOfSeats(int numberOfSeats) {
         this.numberOfSeats = numberOfSeats;
     }
 

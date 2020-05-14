@@ -29,7 +29,7 @@
                 <img alt="memorynotfound logo" class="logo-style" th:src="@{/img/transdor.png}"/>
                 <a th:href="@{/}">Home</a>
                 <a href="#news">Routes</a>
-                <a href="#news">Company</a>
+                <a th:href="@{/company}">Company</a>
                 <a href="#news">Help</a>
                 <div class="navigation-item">
                     <a sec:authorize="isAnonymous()" th:href="@{login}">Log In/Sign Up</a>
@@ -81,22 +81,23 @@
 </div>
 
 <!-- 3 Sections Rute/Curse/Bagaje -->
-<div class="w3-row-padding w3-center w3-transparent">
-    <article class="w3-third">
-        <p>Rute</p>
-        <img alt="Random Name" style="width:20%" th:src="@{/img/bus%20logo.png}">
-        <p></p>
-    </article>
-    <article class="w3-third">
-        <p>Stații</p>
-        <img alt="Random Name" style="width:20%" th:src="@{/img/bus%20logo2.png}">
-        <p></p>
-    </article>
-    <article class="w3-third">
-        <p>Bagaje</p>
-        <img alt="Random Name" style="width:20%" th:src="@{/img/bus%20logo3.png}">
-        <p></p>
-    </article>
+<div class="announcements ">
+    <div class="item-img">
+        <img alt="Random Name" style="width:25%" th:src="@{/img/bus%20logo.png}">
+        <div class="font-weight-bold">Comfort on board</div>
+        <div>Our buses are equipped with large and comfortable seats, a toilet, Wi-Fi and power outlets.</div>
+    </div>
+    <div class="item-img delay">
+        <img alt="Random Name" style="width:25%" th:src="@{/img/bus%20logo2.png}">
+        <div class="font-weight-bold">No delays</div>
+        <div>Our passengers are our priority and punctuality is our strong point.</div>
+    </div>
+    <div class="item-img luggage">
+        <img alt="Random Name" style="width:25%" th:src="@{/img/bus%20logo3.png}">
+        <div class="font-weight-bold">Luggage included</div>
+        <div>Our buses have a separate place for luggage.
+            Luggage safety is guaranteed</div>
+    </div>
 </div>
 
 <script type="text/javascript">
@@ -104,9 +105,6 @@
 $('.datepicker').datepicker({
     startDate: new Date()
 });
-
-
-
 
 </script>
 

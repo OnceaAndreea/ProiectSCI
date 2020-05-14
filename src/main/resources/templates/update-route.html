@@ -1,77 +1,122 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.thymeleaf.org/extras/spring-security" >
+<html xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <title>Update Route</title>
+    <link rel="stylesheet" th:href="@{/css/common.css}">
+    <link rel="stylesheet" th:href="@{/css/admin.css}">
+    <link crossorigin="anonymous" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.css"
+          rel="stylesheet"
+          type="text/css">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css" rel="stylesheet">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.js"
+            type="text/javascript"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </head>
 
 <body>
+<div th:insert="home-page.html :: navigation"></div>
 
-<div>
-    <div th:if="${param.success}">
-        <div class="alert alert-info">Ruta a fost adaugata
-            cu succes!</div>
+<div class="admin-dashboard-menu">
+    <div class="admin-dashboard-menu-item">
+        <a class="admin-dashboard-menu-item-user" th:href="@{/addRoute}"> Add new routes</a>
     </div>
-
-    <form action="#" th:action="@{/update/{id}(id=${busRoute.id})}" th:object="${busRoute}" method="post">
-        <div>
-            <label for="departure" >Oras de plecare</label>
-            <input type="text" th:field="*{departure}" id="departure" >
-            <span th:if="${#fields.hasErrors('departure')}" th:errors="*{departure}"></span>
-        </div>
-        <div>
-            <label for="departureStation" >Statia de plecare</label>
-            <input type="text" th:field="*{departureStation}" id="departureStation" >
-            <span th:if="${#fields.hasErrors('departureStation')}" th:errors="*{departureStation}"></span>
-        </div>
-        <div>
-            <label for="departureTime" >Ora de plecare</label>
-            <input type="text" th:field="*{departureTime}" id="departureTime" >
-            <span th:if="${#fields.hasErrors('departureTime')}" th:errors="*{departureTime}"></span>
-        </div>
-        <div>
-            <label for="arrival">Oras de sosire</label>
-            <input type="text" th:field="*{arrival}" id="arrival" >
-            <span th:if="${#fields.hasErrors('arrival')}" th:errors="*{arrival}"></span>
-        </div>
-        <div>
-            <label for="arrivalStation" >Statia de sosire</label>
-            <input type="text" th:field="*{arrivalStation}" id="arrivalStation" >
-            <span th:if="${#fields.hasErrors('arrivalStation')}" th:errors="*{arrivalStation}"></span>
-        </div>
-        <div>
-            <label for="arrivalTime" >Ora de sosire</label>
-            <input type="text" th:field="*{arrivalTime}" id="arrivalTime" >
-            <span th:if="${#fields.hasErrors('arrivalTime')}" th:errors="*{arrivalTime}"></span>
-        </div>
-        <div>
-            <label for="departureDate">Data cursei</label>
-            <input type="date" th:field="*{departureDate}" id="departureDate" >
-            <span th:if="${#fields.hasErrors('departureDate')}" th:errors="*{departureDate}"></span>
-        </div>
-        <div>
-            <label for="distance" >Distanta</label>
-            <input type="text" th:field="*{distance}" id="distance" >
-            <span th:if="${#fields.hasErrors('distance')}" th:errors="*{distance}"></span>
-        </div>
-        <div>
-            <label for="price" >Pret</label>
-            <input type="text" th:field="*{price}" id="price" >
-            <span th:if="${#fields.hasErrors('price')}" th:errors="*{price}"></span>
-        </div>
-        <div>
-            <label for="busId" >Id-ul autobuzului</label>
-            <input type="text" th:field="*{bus}" id="busId" >
-            <span th:if="${#fields.hasErrors('bus')}" th:errors="*{bus}"></span>
-        </div>
-
-        <input type="submit" name="Update Route" value="Salveaza modificari" >
-    </form>
+    <div class="admin-dashboard-menu-item">
+        <a class="admin-dashboard-menu-item-cart" th:href="@{/editOrDelete}">Edit/delete routes</a>
+    </div>
+    <div class="admin-dashboard-menu-item">
+        <a class="admin-dashboard-menu-item-cart" th:href="@{/addBus}">Add new buses</a>
+    </div>
+    <div class="admin-dashboard-menu-item">
+        <a class="admin-dashboard-menu-item-cart" th:href="@{/editOrDeleteBus}">Edit/delete buses</a>
+    </div>
 </div>
 
+<div class="add-form-container">
+    <h4 class="font-weight-bold">Edit Route</h4>
+    <div class="line-separator"></div>
+    <div th:if="${param.success}">
+        <div class="notify notify-info">Route has been successfully updated</div>
+    </div>
+
+    <form action="#" method="post" th:action="@{/update/{id}(id=${busRoute.id})}" th:object="${busRoute}">
+        <div class="margin-input-group">
+            <label class="margin-departure" for="departure">Departure</label>
+            <input class="border-radius" id="departure" th:field="*{departure}" type="text">
+            <span class="message-for-error" th:errors="*{departure}" th:if="${#fields.hasErrors('departure')}"></span>
+        </div>
+        <div class="margin-input-group">
+            <label class="margin-departure-station" for="departureStation">Departure station</label>
+            <input class="border-radius" id="departureStation" th:field="*{departureStation}" type="text">
+            <span class="message-for-error" th:errors="*{departureStation}"
+                  th:if="${#fields.hasErrors('departureStation')}"></span>
+        </div>
+        <div class="margin-input-group">
+            <label class="margin-departure-hour" for="departureTime">Departure hour</label>
+            <input class="border-radius" id="departureTime" th:field="*{departureTime}" type="text">
+            <span class="message-for-error" th:errors="*{departureTime}"
+                  th:if="${#fields.hasErrors('departureTime')}"></span>
+        </div>
+        <div class="margin-input-group">
+            <label class="margin-arrival" for="arrival">Arrival</label>
+            <input class="border-radius" id="arrival" th:field="*{arrival}" type="text">
+            <span class="message-for-error" th:errors="*{arrival}" th:if="${#fields.hasErrors('arrival')}"></span>
+        </div>
+        <div class="margin-input-group">
+            <label class="margin-arrival-station" for="arrivalStation">Arrival station</label>
+            <input class="border-radius" id="arrivalStation" th:field="*{arrivalStation}" type="text">
+            <span class="message-for-error" th:errors="*{arrivalStation}"
+                  th:if="${#fields.hasErrors('arrivalStation')}"></span>
+        </div>
+        <div class="margin-input-group">
+            <label class="margin-arrival-hour" for="arrivalTime">Arrival hour</label>
+            <input class="border-radius" id="arrivalTime" th:field="*{arrivalTime}" type="text">
+            <span class="message-for-error" th:errors="*{arrivalTime}"
+                  th:if="${#fields.hasErrors('arrivalTime')}"></span>
+        </div>
+        <div class="margin-input-group">
+            <div class="d-inline margin-input-group">
+                <label class="margin-date" for="departureDate">Data</label>
+                <div class='group-for-date' id="datepicker">
+                    <input autocomplete="off" class="datepicker" id="departureDate" th:field="*{departureDate}"
+                           type="text">
+                </div>
+                <span class="message-for-error" th:errors="*{departureDate}"
+                      th:if="${#fields.hasErrors('departureDate')}"></span>
+            </div>
+        </div>
+        <div class="margin-input-group">
+            <label class="margin-distance" for="distance">Distance</label>
+            <input class="border-radius" id="distance" th:field="*{distance}" type="text">
+            <span class="message-for-error" th:errors="*{distance}" th:if="${#fields.hasErrors('distance')}"></span>
+        </div>
+        <div class="margin-input-group">
+            <label class="margin-price" for="price">Price</label>
+            <input class="border-radius" id="price" th:field="*{price}" type="text">
+            <span class="message-for-error" th:errors="*{price}" th:if="${#fields.hasErrors('price')}"></span>
+        </div>
+        <div class="margin-input-group">
+            <label class="margin-bus" for="busId">Bus ID</label>
+            <input class="border-radius" id="busId" th:field="*{bus}" type="text">
+            <span class="message-for-error" th:errors="*{bus}" th:if="${#fields.hasErrors('bus')}"></span>
+        </div>
+        <div>
+            <input name="Update Route" type="submit" value="Save">
+            <a id="cancel-border" th:href="@{/editOrDelete}">Cancel</a>
+        </div>
+    </form>
+    <div class="line-separator"></div>
+</div>
+
+<script type="text/javascript">
+   $('.datepicker').datepicker({
+    startDate: new Date()
+   });
+</script>
 
 </body>
 

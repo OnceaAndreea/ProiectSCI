@@ -1,36 +1,58 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.thymeleaf.org/extras/spring-security" >
+<html xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet"  th:href="@{/css/common.css}">
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <title>Add new bus</title>
+    <link rel="stylesheet" th:href="@{/css/admin.css}">
+    <link rel="stylesheet" th:href="@{/css/common.css}">
+    <link crossorigin="anonymous" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css" rel="stylesheet">
 </head>
 
 <body>
-  <div>
-      <div th:if="${param.success}">
-          <div class="alert alert-info">Autocarul a fost inregistrat cu succes!</div>
-      </div>
 
-      <div>
-          <form action="#" th:action="@{/addBus}" th:object="${bus}" method="post">
-              <div>
-                  <label for="id" >Numar de inregistrare</label>
-                  <input type="text" th:field="*{id}" id="id" >
-                  <span th:if="${#fields.hasErrors('id')}" th:errors="*{id}"></span>
-              </div>
-              <div>
-                  <label for="numberOfSeats" >Numar locuri</label>
-                  <input type="text" th:field="*{numberOfSeats}" id="numberOfSeats" >
-                  <span th:if="${#fields.hasErrors('numberOfSeats')}" th:errors="*{numberOfSeats}"></span>
-              </div>
-              <input type="submit" name="addNewBus" value="Adauga autocar">
-          </form>
-      </div>
-  </div>
+<div th:insert="home-page.html :: navigation"></div>
+
+<div class="admin-dashboard-menu">
+    <div class="admin-dashboard-menu-item">
+        <a class="admin-dashboard-menu-item-user" th:href="@{/addRoute}"> Add new routes</a>
+    </div>
+    <div class="admin-dashboard-menu-item">
+        <a class="admin-dashboard-menu-item-cart" th:href="@{/editOrDelete}">Edit/delete routes</a>
+    </div>
+    <div class="admin-dashboard-menu-item">
+        <a class="admin-dashboard-menu-item-cart" th:href="@{/addBus}">Add new buses</a>
+    </div>
+    <div class="admin-dashboard-menu-item">
+        <a class="admin-dashboard-menu-item-cart" th:href="@{/editOrDeleteBus}">Edit/delete buses</a>
+    </div>
+</div>
+
+<div class="add-form-container">
+    <h4 class="font-weight-bold">Add a new bus</h4>
+    <div class="line-separator-bus-up"></div>
+
+    <div th:if="${param.success}">
+        <div class="notify">Bus has been succsessfully added!</div>
+    </div>
+
+    <form action="#" method="post" th:action="@{/addBus}" th:object="${bus}">
+        <div class="margin-input-group-bus">
+            <label class="margin-bus-id" for="id">Bus ID</label>
+            <input class="border-radius" id="id" th:field="*{id}" type="text">
+            <span class="message-for-error" th:errors="*{id}" th:if="${#fields.hasErrors('id')}"></span>
+        </div>
+        <div class="margin-input-group-bus">
+            <label class="margin-seats" for="numberOfSeats">Number of seats</label>
+            <input class="border-radius" id="numberOfSeats" th:field="*{numberOfSeats}" type="text">
+            <span class="message-for-error" th:errors="*{numberOfSeats}"
+                  th:if="${#fields.hasErrors('numberOfSeats')}"></span>
+        </div>
+        <input name="addNewBus" type="submit" value="Add bus">
+    </form>
+    <div class="line-separator-bus-down"></div>
+</div>
 
 </body>
 </html>
