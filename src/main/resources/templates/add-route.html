@@ -83,7 +83,7 @@
         </div>
         <div class="margin-input-group">
             <div class="d-inline margin-input-group">
-                <label class="margin-date" for="departureDate">Data</label>
+                <label class="margin-date" for="departureDate">Date</label>
                 <div class='group-for-date' id="datepicker">
                     <input autocomplete="off" class="datepicker" id="departureDate" th:field="*{departureDate}"
                            type="text">
@@ -109,7 +109,7 @@
             <span class="message-for-error" th:errors="*{bus}" th:if="${#fields.hasErrors('bus')}"></span>
         </div>
         <div>
-            <input name="addNewBusRoute" type="submit" value="Adauga ruta">
+            <input name="addNewBusRoute" type="submit" value="Add route">
         </div>
     </form>
     <div class="line-separator"></div>

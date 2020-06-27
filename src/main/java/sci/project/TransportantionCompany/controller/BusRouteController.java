@@ -65,11 +65,11 @@ public class BusRouteController {
             result.rejectValue("departureDate", "error", "*Required");
         }
 
-        if (busRoute.getDistance()==0) {
+        if (busRoute.getDistance() == 0) {
             result.rejectValue("distance", "error", "*Required");
         }
 
-        if (busRoute.getPrice()==0.0) {
+        if (busRoute.getPrice() == 0.0) {
             result.rejectValue("price", "error", "*Required");
         }
 
@@ -128,11 +128,11 @@ public class BusRouteController {
             result.rejectValue("departureDate", "error", "*Required");
         }
 
-        if (busRoute.getDistance()==0) {
+        if (busRoute.getDistance() == 0) {
             result.rejectValue("distance", "error", "*Required");
         }
 
-        if (busRoute.getPrice()==0.0) {
+        if (busRoute.getPrice() == 0.0) {
             result.rejectValue("price", "error", "*Required");
         }
         if (result.hasErrors()) {
@@ -155,6 +155,18 @@ public class BusRouteController {
 
     @GetMapping(value = "/search", params = "searchBtn")
     public String searchRoute(@ModelAttribute("busRoute") @Valid BusRoute busRoute, BindingResult result, Model model) {
+
+        if (busRoute.getDeparture().isEmpty()) {
+            result.rejectValue("departure", "error", "*Required");
+        }
+
+        if (busRoute.getArrival().isEmpty()) {
+            result.rejectValue("arrival", "error", "*Required");
+        }
+
+        if (busRoute.getDepartureDate().isEmpty()) {
+            result.rejectValue("departureDate", "error", "*Required");
+        }
 
         if (result.hasErrors()) {
             return "home-page";

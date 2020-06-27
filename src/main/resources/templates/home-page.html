@@ -47,20 +47,20 @@
                   xmlns:th="http://www.w3.org/1999/xhtml">
 
                 <div class="d-inline">
-                    <label for="departure">De la </label>
+                    <label for="departure">From </label>
                     <input id="departure" th:field="*{departure}" type="text">
                     <span class="error-message" th:errors="*{departure}"
                           th:if="${#fields.hasErrors('departure')}"></span>
                 </div>
 
                 <div class="d-inline">
-                    <label for="arrival">Până la </label>
+                    <label for="arrival">To </label>
                     <input id="arrival" th:field="*{arrival}" type="text">
                     <span th:errors="*{arrival}" th:if="${#fields.hasErrors('arrival')}"></span>
                 </div>
 
                 <div class="d-inline" th:fragment="date">
-                    <label for="departureDate">Data</label>
+                    <label for="departureDate">Date</label>
                     <div class='group-for-date' id="datepicker">
                         <input autocomplete="off" class="datepicker" id="departureDate" th:field="*{departureDate}"
                                type="text">
@@ -71,7 +71,7 @@
                 </div>
 
                 <div class="d-inline">
-                    <input class="btn btn-success" name="searchBtn" type="submit" value="Cautare">
+                    <input class="btn btn-success" name="searchBtn" type="submit" value="Search">
                 </div>
             </form>
         </div>

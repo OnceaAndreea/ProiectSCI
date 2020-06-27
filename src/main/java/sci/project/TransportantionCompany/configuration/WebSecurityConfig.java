@@ -32,6 +32,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/webjars/**").permitAll()
                 .antMatchers("/search").permitAll()
                 .antMatchers("/company").permitAll()
+                .antMatchers("/administration").hasRole("ADMIN")
+                .antMatchers("/addRoute").hasRole("ADMIN")
+                .antMatchers("/editOrDelete").hasRole("ADMIN")
+                .antMatchers("/addBus").hasRole("ADMIN")
+                .antMatchers("/editOrDeleteBus").hasRole("ADMIN")
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
@@ -44,7 +49,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
                 .logoutSuccessUrl("/login?logout")
                 .permitAll();
-//.access("hasRole('ROLE_ADMIN')")
+
     }
 
     @Bean

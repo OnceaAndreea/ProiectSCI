@@ -55,6 +55,13 @@ public class BusTicketController {
             result.rejectValue("quantity", "error", "Only "+busRoute.getNumberOfAvailableTickets()+" available seats left!");
         }
 
+        if(ticketDetails.getQuantity()<=0) {
+            result.rejectValue("quantity","error", "Please provide a valid number");
+        }
+
+        if (ticketDetails.getQuantity() != (int)ticketDetails.getQuantity())
+            result.rejectValue("quantity","error", "Please provide a valid number");
+
         if (result.hasErrors())
             return "buy-ticket";
 
