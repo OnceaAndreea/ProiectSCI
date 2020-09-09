@@ -134,3 +134,10 @@ body {
    text-decoration: none;
 }
 
+.no-matching-routes {
+   margin-top: 178px;
+   text-align: center;
+   font-size: 27px;
+   color: #ff7272;
+   font-style: italic;
+}

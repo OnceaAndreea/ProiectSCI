@@ -1,0 +1,22 @@
+.confirmation-container {
+    margin-top: 180px;
+    text-align: center;
+    border: solid;
+    width: 60%;
+    margin: 190 auto;
+    border: 1px solid #3a792a;;
+    background: #f5f2f2;
+    border-radius: 5px;
+    padding: 30px;
+    margin-left: 230px;
+}
+
+h2 {
+    color: #677166;
+    font-style: italic;
+}
+
+h5 {
+   margin-top: 47px;
+}
+

@@ -77,7 +77,8 @@ public class BusTicketController {
         busTicket.setDetails(ticketDetails);
         user.assignTicketToUser(busTicket);
 
-        return "test";
+        return "confirmation-page";
+
     }
 
 }

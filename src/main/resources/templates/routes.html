@@ -18,7 +18,7 @@
  <div>.</div>
 
 <div class="route-container" th:switch="${busRoutes.size()}">
-    <h2 th:case="'0'">Nu exista rute disponibile!</h2>
+    <p th:case="'0'" class="no-matching-routes">Sorry! No matching routes for your search!</p>
     <div th:case="*">
 
         <div class="title-container">

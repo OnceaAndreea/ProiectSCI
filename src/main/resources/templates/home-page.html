@@ -26,15 +26,15 @@
 <div class="road-background">
     <div class="navigation-container" th:fragment="navigation">
         <div class="navibar">
-                <img alt="memorynotfound logo" class="logo-style" th:src="@{/img/transdor.png}"/>
-                <a th:href="@{/}">Home</a>
-                <a href="#news">Routes</a>
-                <a th:href="@{/company}">Company</a>
-                <a href="#news">Help</a>
-                <div class="navigation-item">
-                    <a sec:authorize="isAnonymous()" th:href="@{login}">Log In/Sign Up</a>
-                    <a sec:authorize="isAuthenticated()" th:href="@{/profile}">My Profile</a>
-                </div>
+            <img alt="memorynotfound logo" class="logo-style" th:src="@{/img/transdor.png}"/>
+            <a th:href="@{/}">Home</a>
+            <a href="#news">Routes</a>
+            <a th:href="@{/company}">Company</a>
+            <a href="#news">Help</a>
+            <div class="navigation-item">
+                <a sec:authorize="isAnonymous()" th:href="@{login}">Log In/Sign Up</a>
+                <a sec:authorize="isAuthenticated()" th:href="@{/profile}">My Profile</a>
+            </div>
         </div>
     </div>
 
@@ -62,11 +62,11 @@
                 <div class="d-inline" th:fragment="date">
                     <label for="departureDate">Date</label>
                     <div class='group-for-date' id="datepicker">
-                        <input autocomplete="off" class="datepicker" id="departureDate" th:field="*{departureDate}"
-                               type="text">
+                        <input autocomplete="off" class="datepicker" id="departureDate" th:field="*{departureDate}" type="text">
                         <span class="input-group-addon">
-                    <span class="glyphicon glyphicon-calendar"></span>
-                </span>
+                            <span class="glyphicon glyphicon-calendar"></span>
+                        </span>
+                        <span th:errors="*{departureDate}" th:if="${#fields.hasErrors('departureDate')}"></span>
                     </div>
                 </div>
 
@@ -96,7 +96,8 @@
         <img alt="Random Name" style="width:25%" th:src="@{/img/bus%20logo3.png}">
         <div class="font-weight-bold">Luggage included</div>
         <div>Our buses have a separate place for luggage.
-            Luggage safety is guaranteed</div>
+            Luggage safety is guaranteed
+        </div>
     </div>
 </div>
 
@@ -105,6 +106,7 @@
 $('.datepicker').datepicker({
     startDate: new Date()
 });
+
 
 </script>
 

@@ -19,6 +19,9 @@
 <div>.</div>
 
 <div class="order-details">
+    <div th:if="${param.success}">
+        <div class="notify notify-info">Ticket has been succsessfully added!</div>
+    </div>
     <form action="#" method="post" th:action="@{/buy}" th:object="${busRoute}">
         <div class="your-order-title">Your Order</div>
         <div>
