@@ -5,6 +5,7 @@ import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.ApplicationListener;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.stereotype.Component;
 import sci.project.TransportantionCompany.model.Role;
 import sci.project.TransportantionCompany.model.User;
 import sci.project.TransportantionCompany.repository.UserRepository;
@@ -12,6 +13,7 @@ import sci.project.TransportantionCompany.repository.UserRepository;
 import java.util.Arrays;
 import java.util.Objects;
 
+@Component
 public class AdminCreator implements ApplicationListener<ApplicationReadyEvent> {
 
     @Autowired
