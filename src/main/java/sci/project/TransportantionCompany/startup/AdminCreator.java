@@ -17,22 +17,22 @@ import java.util.Objects;
 public class AdminCreator implements ApplicationListener<ApplicationReadyEvent> {
 
     @Autowired
-    private UserRepository userRepository;
+    private UserRepository usrRepository;
 
     @Autowired
-    private BCryptPasswordEncoder passwordEncoder;
+    private BCryptPasswordEncoder passwdEncoder;
 
     @Override
     public void onApplicationEvent(ApplicationReadyEvent applicationReadyEvent) {
-        User user=userRepository.findByEmail("admin@yahoo.com");
+        User user=usrRepository.findByEmail("admin@yahoo.com");
 
         if(Objects.isNull(user)) {
             user = new User();
         user.setFirstName("admin");
         user.setLastName("admin");
         user.setEmail("admin@yahoo.com");
-        user.setPassword(passwordEncoder.encode("transdor"));
+        user.setPassword(passwdEncoder.encode("transdor"));
         user.setRoles(Arrays.asList(new Role("ROLE_ADMIN")));
-        userRepository.save(user);
+        usrRepository.save(user);
     }}
 }
