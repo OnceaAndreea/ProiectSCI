@@ -35,7 +35,7 @@ public class BusRouteServiceImpl implements BusRouteService {
         List<BusRoute> allRoutes = busRouteRepository.findAll();
 
         for (int i = 0; i < allRoutes.size(); i++) {
-            if (allRoutes.get(i).getDeparture().equals(departure) && allRoutes.get(i).getArrival().equals(arrival) && allRoutes.get(i).getDepartureDate().equals(departureDate) && allRoutes.get(i).getNumberOfAvailableTickets()>0)
+            if (allRoutes.get(i).getDeparture().equalsIgnoreCase(departure) && allRoutes.get(i).getArrival().equalsIgnoreCase(arrival) && allRoutes.get(i).getDepartureDate().equals(departureDate) && allRoutes.get(i).getNumberOfAvailableTickets()>0)
                 matchingRoutes.add(allRoutes.get(i));
         }
 
