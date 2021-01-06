@@ -46,7 +46,7 @@ public class BusRoute implements Comparable<BusRoute> {
     private int numberOfAvailableTickets;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "bus_id", columnDefinition = "VARCHAR(64)", nullable = false)
+    @JoinColumn(name = "bus_id", columnDefinition = "VARCHAR(150)", nullable = false)
     private Bus bus;
 
     public BusRoute() {

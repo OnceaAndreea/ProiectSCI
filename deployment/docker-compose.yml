@@ -1,0 +1,10 @@
+version: "3.3"
+
+services:
+  transportation:
+    image: transport_app:latest
+    container_name: transportation_company_app
+    ports:
+      - "8081:8081"
+    network_mode: host
+
